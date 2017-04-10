@@ -26,6 +26,9 @@ namespace EU4SavegameTracker
 
         private static void fsw_Changed(object sender, FileSystemEventArgs e)
         {
+            if (new FileInfo(e.FullPath).Length == 0)
+                return;
+
             if (timers.ContainsKey(e.Name))
                 timers[e.Name].Dispose();
 
@@ -36,11 +39,17 @@ namespace EU4SavegameTracker
 
         private static void fsw_Created(object sender, FileSystemEventArgs e)
         {
-            timers.Add(e.Name, new Timer(alarm, e.Name, 15 * 1000, 1000));
+            if (!timers.ContainsKey(e.Name))
+            {
+                Console.WriteLine($"{e.Name} got created!");
+                timers.Add(e.Name, new Timer(alarm, e.Name, 10 * 1000, 1000));
+            }
         }
 
         private static void Main(string[] args)
         {
+            TagNames.GetAvailableLanguages();
+
             var port = -1;
             string hostname = "";
             var savegamePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),

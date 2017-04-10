@@ -51,7 +51,7 @@ namespace EU4Savegames
             foreach (var tagFile in tagFiles)
             {
                 var dashIndex = tagFile.LastIndexOf('-') + 1;
-                var length = dashIndex - tagFile.LastIndexOf('.');
+                var length = tagFile.LastIndexOf('.') - dashIndex;
                 var language = tagFile.Substring(dashIndex, length);
 
                 var reader = new StreamReader(assembly.GetManifestResourceStream(tagFile));
@@ -60,6 +60,8 @@ namespace EU4Savegames
                     reader.GetAllLines().Select(line => line.Split(':')).ToDictionary(
                         split => split[0],
                         split => split[1]));
+
+                reader.Close();
             }
 
             return languages;
