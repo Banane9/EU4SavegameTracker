@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using EU4Savegames;
 using Microsoft.Win32;
 
@@ -13,7 +14,7 @@ namespace EU4SavegameInfo.NightbotUpdater
     internal class SavegameTracker
     {
         private readonly FileSystemWatcher fsw = new FileSystemWatcher(DefaultPath, "*.eu4");
-        private readonly Dictionary<string, Timer> timers = new Dictionary<string, Timer>();
+        private readonly Dictionary<string, System.Threading.Timer> timers = new Dictionary<string, System.Threading.Timer>();
 
         public static string DefaultPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 "Paradox Interactive", "Europa Universalis IV", "save games");
@@ -30,25 +31,26 @@ namespace EU4SavegameInfo.NightbotUpdater
             set { fsw.Path = value; }
         }
 
-        public SavegameTracker(Action<string> onNewPath, string path = null)
+        public SavegameTracker(Settings settings)
         {
-            if (path != null)
-                SavegamePath = path;
+            if (settings.SavegamePath != null)
+                SavegamePath = settings.SavegamePath;
 
             if (!Directory.Exists(SavegamePath))
             {
-                var folderBrowser = new System.Windows.Forms.FolderBrowserDialog()
+                var folderBrowser = new FolderBrowserDialog()
                 {
                     ShowNewFolderButton = false,
                     Description = "Pick Savegame Location",
                     RootFolder = Environment.SpecialFolder.MyDocuments,
                 };
 
-                if (folderBrowser.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                    throw new InvalidOperationException("No savegame folder selected.");
+                while (folderBrowser.ShowDialog() != DialogResult.OK)
+                    if (MessageBox.Show("You must pick your savegame location!", "Savegame Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+                        throw new InvalidOperationException();
 
                 SavegamePath = folderBrowser.SelectedPath;
-                onNewPath(SavegamePath);
+                settings.Update(SavegamePath);
             }
 
             var fsw = new FileSystemWatcher(SavegamePath, "*.eu4");
@@ -60,8 +62,13 @@ namespace EU4SavegameInfo.NightbotUpdater
         private void alarm(object state)
         {
             var file = (string)state;
-            Console.WriteLine($"{file} didn't get written to!");
-            Console.Beep();
+
+            if (timers.ContainsKey(file))
+                timers[file].Dispose();
+
+            timers.Remove(file);
+
+            MessageBox.Show($"{file} didn't get written to!", "Corrupted Savegame", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void fsw_Changed(object sender, FileSystemEventArgs e)
@@ -80,10 +87,7 @@ namespace EU4SavegameInfo.NightbotUpdater
         private void fsw_Created(object sender, FileSystemEventArgs e)
         {
             if (!timers.ContainsKey(e.Name))
-            {
-                Console.WriteLine($"{e.Name} got created!");
-                timers.Add(e.Name, new Timer(alarm, e.Name, 10 * 1000, 1000));
-            }
+                timers.Add(e.Name, new System.Threading.Timer(alarm, e.Name, 10 * 1000, 1000));
         }
 
         private async void notifyNightbot(string savegame)

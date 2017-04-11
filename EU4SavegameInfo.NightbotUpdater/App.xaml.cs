@@ -9,7 +9,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using EU4SavegameInfo.NightbotUpdater.OAuth;
 using Newtonsoft.Json;
 
 namespace EU4SavegameInfo.NightbotUpdater
@@ -31,7 +30,8 @@ namespace EU4SavegameInfo.NightbotUpdater
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            MainWindow = new MainWindow();
+            MainWindow = new Window() { ShowInTaskbar = false };
+            MainWindow.Hide();
 
             settings = File.Exists("settings.json") ? JsonConvert.DeserializeObject<Settings>(File.ReadAllText("settings.json")) : new Settings();
 
@@ -40,7 +40,7 @@ namespace EU4SavegameInfo.NightbotUpdater
             if (settings.AccessToken != null && settings.ExpiresAt < DateTime.Now)
                 refreshNightbotToken();
 
-            tracker = new SavegameTracker(updateSettings, settings.SavegamePath) { IsTracking = true };
+            tracker = new SavegameTracker(settings) { IsTracking = true };
             trackPath = new MenuItem(tracker.SavegamePath);
 
             trackSaves = new MenuItem("Track Saves", trackSaves_OnClick) { Checked = true };
@@ -112,7 +112,7 @@ namespace EU4SavegameInfo.NightbotUpdater
             if (!tokenResponse.Scope.Contains("commands"))
                 return false;
 
-            updateSettings(tokenResponse);
+            settings.Update(tokenResponse);
 
             return true;
         }
@@ -131,7 +131,7 @@ namespace EU4SavegameInfo.NightbotUpdater
             {
                 { "client_id", "cac06b4cc0205a7fa9c4f223d42e19e7" },
                 { "client_secret", "74c9cf88e9bdccbb37aa8807e525cf65" },
-                { "code", settings.RefreshToken },
+                { "refresh_token", settings.RefreshToken },
                 { "grant_type", "refresh_token" },
                 { "redirect_uri", "https://banane9.github.io/eu4savegameauthenticate" }
             });
@@ -149,7 +149,7 @@ namespace EU4SavegameInfo.NightbotUpdater
                 return;
 
             nightbotAccess.Checked = true;
-            updateSettings(tokenResponse);
+            settings.Update(tokenResponse);
         }
 
         private void trackSaves_OnClick(object sender, EventArgs e)
@@ -157,26 +157,6 @@ namespace EU4SavegameInfo.NightbotUpdater
             var trackSaves = (MenuItem)sender;
             trackSaves.Checked = !trackSaves.Checked;
             tracker.IsTracking = trackSaves.Checked;
-        }
-
-        private void updateSettings(string newPath)
-        {
-            settings.SavegamePath = newPath;
-            updateSettings();
-        }
-
-        private void updateSettings()
-        {
-            File.WriteAllText("settings.json", JsonConvert.SerializeObject(settings));
-        }
-
-        private void updateSettings(TokenResponse tokenResponse)
-        {
-            settings.AccessToken = tokenResponse.AccessToken;
-            settings.ExpiresAt = tokenResponse.ExpiresAt;
-            settings.RefreshToken = tokenResponse.RefreshToken;
-
-            updateSettings();
         }
     }
 }

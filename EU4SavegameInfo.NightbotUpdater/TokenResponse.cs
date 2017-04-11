@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace EU4SavegameInfo.NightbotUpdater.OAuth
+namespace EU4SavegameInfo.NightbotUpdater
 {
+    /// <summary>
+    /// Represents the json object returned when an access token is gotten from an authorization or refresh token.
+    /// </summary>
     [JsonObject]
     internal sealed class TokenResponse
     {
