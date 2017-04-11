@@ -18,27 +18,24 @@ namespace EU4SavegameInfo.NightbotUpdater
     /// </summary>
     public partial class App : System.Windows.Application
     {
-        private readonly HttpClient httpClient = new HttpClient();
-        private OAuthBrowserWindow browserWindow;
         private MenuItem nightbotAccess;
+        private NightbotUpdater nightbotUpdater;
         private NotifyIcon notifyIcon;
         private Settings settings;
         private SavegameTracker tracker;
         private MenuItem trackPath;
         private MenuItem trackSaves;
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             MainWindow = new Window() { ShowInTaskbar = false };
             MainWindow.Hide();
 
             settings = File.Exists("settings.json") ? JsonConvert.DeserializeObject<Settings>(File.ReadAllText("settings.json")) : new Settings();
+            nightbotUpdater = new NightbotUpdater(settings);
 
-            nightbotAccess = new MenuItem("Nightbot Access", establishNightbotAccess) { Checked = settings.ExpiresAt > DateTime.Now };
-
-            if (settings.AccessToken != null && settings.ExpiresAt < DateTime.Now)
-                refreshNightbotToken();
+            nightbotAccess = new MenuItem("Nightbot Access", nightbotAccess_OnClick) { Checked = await nightbotUpdater.GetIsConnected() };
 
             tracker = new SavegameTracker(settings) { IsTracking = true };
             trackPath = new MenuItem(tracker.SavegamePath);
@@ -65,91 +62,20 @@ namespace EU4SavegameInfo.NightbotUpdater
             };
         }
 
-        private async void browserWindow_Closing(object sender, CancelEventArgs e)
+        private async void nightbotAccess_OnClick(object sender, EventArgs e)
         {
-            browserWindow.Closing -= browserWindow_Closing;
-            browserWindow = null;
-
-            if (!(((OAuthBrowserWindow)sender).DataContext is string))
-                return;
-
-            if (await getNightbotTokens((string)((OAuthBrowserWindow)sender).DataContext))
-                nightbotAccess.Checked = true;
-        }
-
-        private void establishNightbotAccess(object sender, EventArgs e)
-        {
-            if (nightbotAccess.Checked)
-                return;
-
-            browserWindow = new OAuthBrowserWindow();
-            browserWindow.Closing += browserWindow_Closing;
-            browserWindow.Show();
-        }
-
-        private async Task<bool> getNightbotTokens(string code)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token");
-
-            var formContent = new FormUrlEncodedContent(new Dictionary<string, string>
+            if (!await nightbotUpdater.GetIsConnected())
             {
-                { "client_id", "cac06b4cc0205a7fa9c4f223d42e19e7" },
-                { "client_secret", "74c9cf88e9bdccbb37aa8807e525cf65" },
-                { "code", code },
-                { "grant_type", "authorization_code" },
-                { "redirect_uri", "https://banane9.github.io/eu4savegameauthenticate" }
-            });
-
-            request.Content = formContent;
-
-            var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
-
-            if (!response.IsSuccessStatusCode)
-                return false;
-
-            var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(await response.Content.ReadAsStringAsync());
-
-            if (!tokenResponse.Scope.Contains("commands"))
-                return false;
-
-            settings.Update(tokenResponse);
-
-            return true;
-        }
-
-        private async Task refreshNightbotToken()
-        {
-            if (settings.ExpiresAt.AddDays(30) < DateTime.Now)
-            {
-                establishNightbotAccess(null, null);
+                nightbotAccess.Checked = false;
+                nightbotAccess.Checked = await nightbotUpdater.Connect();
                 return;
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token");
-
-            var formContent = new FormUrlEncodedContent(new Dictionary<string, string>
-            {
-                { "client_id", "cac06b4cc0205a7fa9c4f223d42e19e7" },
-                { "client_secret", "74c9cf88e9bdccbb37aa8807e525cf65" },
-                { "refresh_token", settings.RefreshToken },
-                { "grant_type", "refresh_token" },
-                { "redirect_uri", "https://banane9.github.io/eu4savegameauthenticate" }
-            });
-
-            request.Content = formContent;
-
-            var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
-
-            if (!response.IsSuccessStatusCode)
+            if (System.Windows.Forms.MessageBox.Show("Do you really want to revoke Nightbot access?", "Confirm Nightbot Access Revocation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                 return;
 
-            var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(await response.Content.ReadAsStringAsync());
-
-            if (!tokenResponse.Scope.Contains("commands"))
-                return;
-
-            nightbotAccess.Checked = true;
-            settings.Update(tokenResponse);
+            if (await nightbotUpdater.RevokeAccess())
+                nightbotAccess.Checked = false;
         }
 
         private void trackSaves_OnClick(object sender, EventArgs e)

@@ -93,6 +93,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="NightbotUpdater.cs" />
     <Compile Include="TokenResponse.cs" />
     <Compile Include="SavegameTracker.cs" />
     <Compile Include="Settings.cs" />

@@ -7,7 +7,7 @@
         xmlns:cef="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         xmlns:local="clr-namespace:EU4SavegameInfo.NightbotUpdater"
         mc:Ignorable="d"
-        Title="Sign in to Nightbot" Height="650" Width="400">
+        Title="Sign in to Nightbot" Height="600" Width="400" ResizeMode="NoResize">
     <Grid>
         <cef:ChromiumWebBrowser x:Name="browser" Background="Black" Address="https://api.nightbot.tv/oauth2/authorize?client_id=cac06b4cc0205a7fa9c4f223d42e19e7&amp;response_type=code&amp;scope=commands&amp;redirect_uri=https://banane9.github.io/eu4savegameauthenticate" />
     </Grid>
