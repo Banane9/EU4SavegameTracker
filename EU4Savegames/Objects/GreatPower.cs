@@ -60,8 +60,8 @@ namespace EU4Savegames.Objects
                 {
                     if (line.Contains("="))
                     {
-                        var split = line.Split('=');
-                        switch (split[0].Trim())
+                        var split = line.Trim().Split('=');
+                        switch (split[0])
                         {
                             case "rank":
                                 Rank = int.Parse(split[1]);

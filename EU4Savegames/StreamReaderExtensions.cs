@@ -18,5 +18,13 @@ namespace EU4Savegames
             while ((line = reader.ReadLine()) != null)
                 yield return line;
         }
+
+        public static void ReadTillMatchingClosingBrace(this StreamReader reader)
+        {
+            string line;
+            while (!(line = reader.ReadLine()).Contains('}'))
+                if (line.Contains('{'))
+                    reader.ReadTillMatchingClosingBrace();
+        }
     }
 }

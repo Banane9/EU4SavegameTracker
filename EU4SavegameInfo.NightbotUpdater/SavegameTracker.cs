@@ -14,6 +14,7 @@ namespace EU4SavegameInfo.NightbotUpdater
     internal class SavegameTracker
     {
         private readonly FileSystemWatcher fsw = new FileSystemWatcher(DefaultPath, "*.eu4");
+        private readonly NightbotUpdater nightbotUpdater;
         private readonly Dictionary<string, System.Threading.Timer> timers = new Dictionary<string, System.Threading.Timer>();
 
         public static string DefaultPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
@@ -31,7 +32,7 @@ namespace EU4SavegameInfo.NightbotUpdater
             set { fsw.Path = value; }
         }
 
-        public SavegameTracker(Settings settings)
+        public SavegameTracker(Settings settings, NightbotUpdater nightbotUpdater)
         {
             if (settings.SavegamePath != null)
                 SavegamePath = settings.SavegamePath;
@@ -94,13 +95,10 @@ namespace EU4SavegameInfo.NightbotUpdater
         {
             await Task.Delay(TimeSpan.FromSeconds(2));
 
-            GreatPower[] greatPowers = null;
-
+            EU4Save save;
             try
             {
-                var save = new EU4Save(savegame);
-                greatPowers = GreatPower.ReadGreatPowersFromFile(save.GetReader()).ToArray();
-                save.Close();
+                save = new EU4Save(savegame);
             }
             catch (IOException)
             {
@@ -110,6 +108,7 @@ namespace EU4SavegameInfo.NightbotUpdater
 
             try
             {
+                nightbotUpdater.Update(save);
             }
             catch (IOException)
             {

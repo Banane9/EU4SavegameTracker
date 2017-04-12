@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using EU4Savegames;
 using Newtonsoft.Json;
 
 namespace EU4SavegameInfo.NightbotUpdater
@@ -90,6 +91,11 @@ namespace EU4SavegameInfo.NightbotUpdater
             settings.Update();
 
             return true;
+        }
+
+        public void Update(EU4Save save)
+        {
+            throw new NotImplementedException();
         }
 
         private async Task<bool> refreshAccessToken()

@@ -37,7 +37,7 @@ namespace EU4SavegameInfo.NightbotUpdater
 
             nightbotAccess = new MenuItem("Nightbot Access", nightbotAccess_OnClick) { Checked = await nightbotUpdater.GetIsConnected() };
 
-            tracker = new SavegameTracker(settings) { IsTracking = true };
+            tracker = new SavegameTracker(settings, nightbotUpdater) { IsTracking = true };
             trackPath = new MenuItem(tracker.SavegamePath);
 
             trackSaves = new MenuItem("Track Saves", trackSaves_OnClick) { Checked = true };

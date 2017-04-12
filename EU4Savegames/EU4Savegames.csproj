@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EU4Save.cs" />
+    <Compile Include="Objects\CountriesObject.cs" />
     <Compile Include="Objects\GreatPower.cs" />
     <Compile Include="ModuleInitializer.cs" />
     <Compile Include="Objects\SavegameObject.cs" />

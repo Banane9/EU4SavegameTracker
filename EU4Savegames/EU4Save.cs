@@ -71,7 +71,7 @@ namespace EU4Savegames
                 if (!SavegameObject.TryGetReaderForTag(getTag(line), out var readTagToObject))
                 {
                     if (line.Contains('{'))
-                        while (!SaveReader.ReadLine().Contains('}')) ;
+                        SaveReader.ReadTillMatchingClosingBrace();
 
                     continue;
                 }
