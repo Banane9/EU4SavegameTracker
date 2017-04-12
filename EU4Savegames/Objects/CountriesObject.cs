@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace EU4Savegames.Objects
 {
     [SavegameTag("countries")]
-    [JsonObject(MemberSerialization = MemberSerialization.OptOut)]
+    [JsonObject(MemberSerialization.OptOut)]
     public sealed class CountriesObject : SavegameObject
     {
         public Country[] Countries { get; private set; }
@@ -34,7 +34,7 @@ namespace EU4Savegames.Objects
             Countries = countries.ToArray();
         }
 
-        [JsonObject(MemberSerialization = MemberSerialization.OptOut)]
+        [JsonObject(MemberSerialization.OptOut)]
         public sealed class Country
         {
             public float GPScore { get; private set; }

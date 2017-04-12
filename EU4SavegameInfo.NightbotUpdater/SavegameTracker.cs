@@ -13,7 +13,7 @@ namespace EU4SavegameInfo.NightbotUpdater
 {
     internal class SavegameTracker
     {
-        private readonly FileSystemWatcher fsw = new FileSystemWatcher(DefaultPath, "*.eu4");
+        private readonly FileSystemWatcher fsw;
         private readonly NightbotUpdater nightbotUpdater;
         private readonly Dictionary<string, System.Threading.Timer> timers = new Dictionary<string, System.Threading.Timer>();
 
@@ -34,10 +34,14 @@ namespace EU4SavegameInfo.NightbotUpdater
 
         public SavegameTracker(Settings settings, NightbotUpdater nightbotUpdater)
         {
-            if (settings.SavegamePath != null)
-                SavegamePath = settings.SavegamePath;
+            this.nightbotUpdater = nightbotUpdater;
 
-            if (!Directory.Exists(SavegamePath))
+            var savegamePath = DefaultPath;
+
+            if (settings.SavegamePath != null)
+                savegamePath = settings.SavegamePath;
+
+            if (!Directory.Exists(savegamePath))
             {
                 var folderBrowser = new FolderBrowserDialog()
                 {
@@ -50,11 +54,11 @@ namespace EU4SavegameInfo.NightbotUpdater
                     if (MessageBox.Show("You must pick your savegame location!", "Savegame Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
                         throw new InvalidOperationException();
 
-                SavegamePath = folderBrowser.SelectedPath;
-                settings.Update(SavegamePath);
+                savegamePath = folderBrowser.SelectedPath;
+                settings.Update(savegamePath);
             }
 
-            var fsw = new FileSystemWatcher(SavegamePath, "*.eu4");
+            fsw = new FileSystemWatcher(savegamePath, "*.eu4");
 
             fsw.Created += fsw_Created;
             fsw.Changed += fsw_Changed;

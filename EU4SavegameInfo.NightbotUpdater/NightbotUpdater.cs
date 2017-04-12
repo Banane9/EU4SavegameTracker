@@ -6,18 +6,29 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EU4Savegames;
+using EU4Savegames.Objects;
 using Newtonsoft.Json;
 
 namespace EU4SavegameInfo.NightbotUpdater
 {
     internal sealed class NightbotUpdater
     {
+        private readonly Dictionary<string, string> customCommands = new Dictionary<string, string>();
+
+        private readonly Dictionary<string, string> defaultRequiredCommands = new Dictionary<string, string>
+        {
+            { "!greatpowers", "Great Powers of the World" },
+            { "!highscores", "Top 10 highest scoring countries" }
+        };
+
         private readonly HttpClient httpClient = new HttpClient();
         private readonly Settings settings;
 
         public NightbotUpdater(Settings settings)
         {
             this.settings = settings;
+
+            establishDefaultRequiredCommands();
         }
 
         public async Task<bool> Connect()
@@ -36,18 +47,17 @@ namespace EU4SavegameInfo.NightbotUpdater
             if (authorizeCode == null || string.IsNullOrWhiteSpace(authorizeCode))
                 return false;
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token");
-
-            var formContent = new FormUrlEncodedContent(new Dictionary<string, string>
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token")
             {
-                { "client_id", "cac06b4cc0205a7fa9c4f223d42e19e7" },
-                { "client_secret", "74c9cf88e9bdccbb37aa8807e525cf65" },
-                { "code", authorizeCode },
-                { "grant_type", "authorization_code" },
-                { "redirect_uri", "https://banane9.github.io/eu4savegameauthenticate" }
-            });
-
-            request.Content = formContent;
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    { "client_id", "cac06b4cc0205a7fa9c4f223d42e19e7" },
+                    { "client_secret", "74c9cf88e9bdccbb37aa8807e525cf65" },
+                    { "code", authorizeCode },
+                    { "grant_type", "authorization_code" },
+                    { "redirect_uri", "https://banane9.github.io/eu4savegameauthenticate" }
+                })
+            };
 
             var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
 
@@ -61,12 +71,14 @@ namespace EU4SavegameInfo.NightbotUpdater
 
             settings.Update(tokenResponse);
 
+            establishDefaultRequiredCommands();
+
             return true;
         }
 
         public async Task<bool> GetIsConnected()
         {
-            return settings.AccessToken != null && (settings.ExpiresAt > DateTime.Now || await Connect());
+            return settings.AccessToken != null && (settings.ExpiresAt > DateTime.Now.AddHours(1) || await Connect());
         }
 
         public async Task<bool> RevokeAccess()
@@ -74,14 +86,13 @@ namespace EU4SavegameInfo.NightbotUpdater
             if (settings.AccessToken == null)
                 return true;
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token/revoke");
-
-            var formContent = new FormUrlEncodedContent(new Dictionary<string, string>
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token/revoke")
             {
-                { "token", settings.AccessToken },
-            });
-
-            request.Content = formContent;
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    { "token", settings.AccessToken },
+                })
+            };
 
             var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
 
@@ -95,23 +106,125 @@ namespace EU4SavegameInfo.NightbotUpdater
 
         public void Update(EU4Save save)
         {
-            throw new NotImplementedException();
+            var gpList = save.GetSavegameObjects<GreatPowersObject>().SingleOrDefault()?.GreatPowers;
+
+            if (gpList != null)
+                UpdateCommand("!greatpowers", buildGPResponse(gpList));
+
+            var countries = save.GetSavegameObjects<CountriesObject>().SingleOrDefault()?.Countries;
+
+            if (countries != null)
+            {
+                UpdateCommand("!highscores", buildHighscoreResponse(countries));
+
+                if (gpList == null)
+                    UpdateCommand("!greatpowers", buildGPResponse(countries));
+            }
+        }
+
+        public async Task<bool> UpdateCommand(string name, string message)
+        {
+            if (!customCommands.ContainsKey(name))
+                return await addCommand(name, message);
+
+            var request = new HttpRequestMessage(HttpMethod.Put, "https://api.nightbot.tv/1/commands/" + customCommands[name])
+            {
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    { "message", message }
+                })
+            };
+
+            request.Headers.Add("Authorization", "Bearer " + settings.AccessToken);
+
+            var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+
+            return response.IsSuccessStatusCode;
+        }
+
+        private async Task<bool> addCommand(string name, string message)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/1/commands")
+            {
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    { "name", name },
+                    { "message", message },
+                    { "coolDown", "30" },
+                    { "userLevel", "everyone" }
+                })
+            };
+
+            request.Headers.Add("Authorization", "Bearer " + settings.AccessToken);
+
+            var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
+
+            if (!response.IsSuccessStatusCode)
+                return false;
+
+            var commandResponse = JsonConvert.DeserializeObject<AddCommandResponse>(await response.Content.ReadAsStringAsync());
+            customCommands.Add(commandResponse.Command.Name, commandResponse.Command.Id);
+
+            return true;
+        }
+
+        private string buildGPResponse(CountriesObject.Country[] countries)
+        {
+            var i = 0;
+            return "Great Powers: " + string.Join(", ", countries.OrderByDescending(country => country.GPScore).Take(8)
+                .Select(country => $"{++i}. {TagNames.GetEntry("english", country.Tag)} ({(int)Math.Round(country.GPScore)})"));
+        }
+
+        private string buildGPResponse(GreatPowersObject.GreatPower[] gpList)
+        {
+            return "Great Powers: " + string.Join(", ", gpList.OrderBy(gp => gp.Rank)
+                .Select(gp => $"{gp.Rank}. {TagNames.GetEntry("english", gp.Tag)} ({(int)Math.Round(gp.Score)})"));
+        }
+
+        private string buildHighscoreResponse(CountriesObject.Country[] countries)
+        {
+            var i = 0;
+            return "Countries with highest Scores: " + string.Join(", ", countries.OrderByDescending(country => country.Score).Take(10)
+                .Select(country => $"{++i}. {TagNames.GetEntry("english", country.Tag)} ({(int)Math.Round(country.Score)})"));
+        }
+
+        private async void establishDefaultRequiredCommands()
+        {
+            if (!await GetIsConnected())
+                return;
+
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://api.nightbot.tv/1/commands");
+            request.Headers.Add("Authorization", "Bearer " + settings.AccessToken);
+
+            var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var commandList = JsonConvert.DeserializeObject<CustomCommandsListResponse>(await response.Content.ReadAsStringAsync());
+
+                foreach (var requiredCommand in defaultRequiredCommands)
+                {
+                    if (!commandList.Commands.Any(cmd => cmd.Name == requiredCommand.Key))
+                        await addCommand(requiredCommand.Key, requiredCommand.Value);
+                    else
+                        customCommands.Add(requiredCommand.Key, commandList.Commands.Single(cmd => cmd.Name == requiredCommand.Key).Id);
+                }
+            }
         }
 
         private async Task<bool> refreshAccessToken()
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token");
-
-            var formContent = new FormUrlEncodedContent(new Dictionary<string, string>
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.nightbot.tv/oauth2/token")
             {
-                { "client_id", "cac06b4cc0205a7fa9c4f223d42e19e7" },
-                { "client_secret", "74c9cf88e9bdccbb37aa8807e525cf65" },
-                { "refresh_token", settings.RefreshToken },
-                { "grant_type", "refresh_token" },
-                { "redirect_uri", "https://banane9.github.io/eu4savegameauthenticate" }
-            });
-
-            request.Content = formContent;
+                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    { "client_id", "cac06b4cc0205a7fa9c4f223d42e19e7" },
+                    { "client_secret", "74c9cf88e9bdccbb37aa8807e525cf65" },
+                    { "refresh_token", settings.RefreshToken },
+                    { "grant_type", "refresh_token" },
+                    { "redirect_uri", "https://banane9.github.io/eu4savegameauthenticate" }
+                })
+            };
 
             var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
 

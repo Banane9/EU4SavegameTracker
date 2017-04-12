@@ -104,7 +104,7 @@ namespace EU4SavegameTracker
                 return;
             }
 
-            var gpList = save?.GetSavegameObjects<GreatPowers>().SingleOrDefault();
+            var gpList = save?.GetSavegameObjects<GreatPowersObject>().SingleOrDefault();
             if (gpList == null)
                 return;
 

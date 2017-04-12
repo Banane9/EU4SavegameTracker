@@ -13,16 +13,15 @@ namespace EU4Savegames.Objects
     /// Represents the information about each great power that's stored in the save file.
     /// </summary>
     [SavegameTag("great_powers")]
-    [JsonObject]
-    public sealed class GreatPowers : SavegameObject
+    [JsonObject(MemberSerialization.OptOut)]
+    public sealed class GreatPowersObject : SavegameObject
     {
-        [JsonProperty("GreatPowers")]
-        public GreatPower[] Countries { get; }
+        public GreatPower[] GreatPowers { get; }
 
-        public GreatPowers(StreamReader reader)
+        public GreatPowersObject(StreamReader reader)
             : base(reader)
         {
-            Countries = readPowers(reader).ToArray();
+            GreatPowers = readPowers(reader).ToArray();
         }
 
         private static IEnumerable<GreatPower> readPowers(StreamReader reader)

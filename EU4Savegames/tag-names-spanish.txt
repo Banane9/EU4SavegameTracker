@@ -600,3 +600,17 @@ WLY:Welayta
 JJI:Janjiro
 ENA:Eneara
 ABB:Dongola
+AKM:Akamatsu
+AKT:Ando
+CBA:Chiba
+ISK:Isshiki
+ITO:Ito
+KKC:Kikuchi
+KNO:Kono
+OGS:Ogasawara
+SHN:Shoni
+STK:Satake
+TKI:Toki
+UTN:Utsunomiya
+TTI:Tsutsui
+ASK:Ashikaga

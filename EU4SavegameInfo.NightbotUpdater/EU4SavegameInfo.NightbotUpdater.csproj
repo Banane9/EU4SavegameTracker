@@ -89,10 +89,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddCommandResponse.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CommandResponse.cs" />
+    <Compile Include="CustomCommandsListResponse.cs" />
     <Compile Include="NightbotUpdater.cs" />
     <Compile Include="TokenResponse.cs" />
     <Compile Include="SavegameTracker.cs" />

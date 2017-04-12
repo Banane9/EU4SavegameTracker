@@ -40,7 +40,7 @@ namespace EU4SavegameInfo.NightbotUpdater
             tracker = new SavegameTracker(settings, nightbotUpdater) { IsTracking = true };
             trackPath = new MenuItem(tracker.SavegamePath);
 
-            trackSaves = new MenuItem("Track Saves", trackSaves_OnClick) { Checked = true };
+            trackSaves = new MenuItem("Track Saves", trackSaves_OnClick) { Checked = tracker.IsTracking };
             trackSaves.MenuItems.Add(trackPath);
 
             var menuItems = new[]
