@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using EU4Savegames;
+using EU4Savegames.Objects;
 using Newtonsoft.Json;
 
 namespace EU4SavegameTracker
@@ -48,8 +49,6 @@ namespace EU4SavegameTracker
 
         private static void Main(string[] args)
         {
-            TagNames.GetAvailableLanguages();
-
             var port = -1;
             string hostname = "";
             var savegamePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
@@ -78,8 +77,7 @@ namespace EU4SavegameTracker
             if (!string.IsNullOrWhiteSpace(hostname) && port > 0)
                 udpClient = new UdpClient(hostname, port);
 
-            var fsw = new FileSystemWatcher(savegamePath, "*.eu4");
-            fsw.EnableRaisingEvents = true;
+            var fsw = new FileSystemWatcher(savegamePath, "*.eu4") { EnableRaisingEvents = true };
             fsw.Created += fsw_Created;
             fsw.Changed += fsw_Changed;
 
@@ -89,18 +87,16 @@ namespace EU4SavegameTracker
 
         private static async void notifyListener(string name)
         {
-            if (udpClient == null)
-                return;
+            //if (udpClient == null)
+            //    return;
 
             await Task.Delay(TimeSpan.FromSeconds(2));
 
-            GreatPower[] greatPowers = null;
+            EU4Save save;
 
             try
             {
-                var save = new EU4Save(name);
-                greatPowers = GreatPower.ReadGreatPowersFromFile(save.GetReader()).ToArray();
-                save.Close();
+                save = new EU4Save(name);
             }
             catch (IOException)
             {
@@ -108,18 +104,23 @@ namespace EU4SavegameTracker
                 return;
             }
 
-            var json = JsonConvert.SerializeObject(greatPowers);
+            var gpList = save?.GetSavegameObjects<GreatPowers>().SingleOrDefault();
+            if (gpList == null)
+                return;
 
-            var datagram = Encoding.UTF8.GetBytes(json);
+            var json = JsonConvert.SerializeObject(gpList);
+            Console.WriteLine(json);
 
-            try
-            {
-                await udpClient.SendAsync(datagram, datagram.Length);
-            }
-            catch (IOException)
-            {
-                Console.WriteLine("Failed to send data");
-            }
+            //var datagram = Encoding.UTF8.GetBytes(json);
+
+            //try
+            //{
+            //    await udpClient.SendAsync(datagram, datagram.Length);
+            //}
+            //catch (IOException)
+            //{
+            //    Console.WriteLine("Failed to send data");
+            //}
         }
 
         private static void usage()
