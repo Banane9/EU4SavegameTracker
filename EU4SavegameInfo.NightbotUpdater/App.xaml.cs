@@ -26,6 +26,12 @@ namespace EU4SavegameInfo.NightbotUpdater
         private MenuItem trackPath;
         private MenuItem trackSaves;
 
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            notifyIcon.Visible = false;
+        }
+
         protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

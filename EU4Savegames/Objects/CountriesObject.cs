@@ -38,6 +38,8 @@ namespace EU4Savegames.Objects
         public sealed class Country
         {
             public float GPScore { get; private set; }
+            public Idea[] Ideas { get; private set; } = new Idea[0];
+            public bool IsPlayer { get; private set; }
             public float Score { get; private set; }
             public string Tag { get; private set; }
 
@@ -46,31 +48,52 @@ namespace EU4Savegames.Objects
                 Tag = tag;
 
                 string line;
-                while ((line = reader.ReadLine()) != null)
+                while ((line = reader.ReadLine()) != null && !line.Contains("}"))
                 {
-                    if (line.Contains("="))
+                    var split = line.Trim().Split('=');
+                    switch (split[0])
                     {
-                        if (line.Contains('{'))
-                        {
-                            reader.ReadTillMatchingClosingBrace();
-                            continue;
-                        }
+                        case "great_power_score":
+                            GPScore = float.Parse(split[1], CultureInfo.InvariantCulture);
+                            break;
 
-                        var split = line.Trim().Split('=');
-                        switch (split[0])
-                        {
-                            case "great_power_score":
-                                GPScore = float.Parse(split[1], CultureInfo.InvariantCulture);
-                                break;
+                        case "score":
+                            Score = float.Parse(split[1], CultureInfo.InvariantCulture);
+                            break;
 
-                            case "score":
-                                Score = float.Parse(split[1], CultureInfo.InvariantCulture);
-                                break;
-                        }
+                        case "human":
+                            IsPlayer = split[1] == "yes";
+                            break;
+
+                        case "active_idea_groups":
+                            var ideas = new List<Idea>();
+                            while ((line = reader.ReadLine()) != null && !line.Contains('}'))
+                                if (line.Split('=').Length == 2)
+                                    ideas.Add(new Idea(line));
+
+                            Ideas = ideas.ToArray();
+                            break;
                     }
 
-                    if (line.Contains("}"))
-                        break;
+                    if (line.Contains('{'))
+                    {
+                        reader.ReadTillMatchingClosingBrace();
+                        continue;
+                    }
+                }
+            }
+
+            public sealed class Idea
+            {
+                public string Name { get; private set; }
+                public int Progress { get; private set; }
+
+                public Idea(string line)
+                {
+                    var split = line.Trim().Split('=');
+
+                    Name = split[0];
+                    Progress = int.Parse(split[1]);
                 }
             }
         }

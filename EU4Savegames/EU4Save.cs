@@ -24,7 +24,13 @@ namespace EU4Savegames
 
         public EU4Save(string path, bool manualRead = false)
         {
-            underlayingFile = File.OpenRead(path);
+            //underlayingFile = File.OpenRead(path);
+            //if (SaveLoader.IsBinarySavegame(underlayingFile))
+            //{
+            //underlayingFile.Close();
+            SaveLoader.Decode(path, "temp.eu4").Wait();
+            var underlayingFile = File.OpenRead("temp.eu4");
+            //}
 
             try
             {
@@ -38,7 +44,7 @@ namespace EU4Savegames
                 savegame = underlayingFile;
             }
 
-            SaveReader = new StreamReader(savegame);
+            SaveReader = new StreamReader(savegame, Encoding.ASCII);
 
             if (manualRead)
                 return;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using EU4Savegames;
+using EU4Savegames.Localisation;
 using EU4Savegames.Objects;
 using Newtonsoft.Json;
 

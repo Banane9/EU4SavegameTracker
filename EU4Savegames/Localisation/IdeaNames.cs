@@ -6,12 +6,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EU4Savegames
+namespace EU4Savegames.Localisation
 {
     /// <summary>
-    /// Contains methods to resolve tags => localized names.
+    /// Contains methods to resolve idea groups => localized names.
     /// </summary>
-    public static class TagNames
+    public static class IdeaNames
     {
         private static readonly Lazy<Dictionary<string, Dictionary<string, string>>> languages = new Lazy<Dictionary<string, Dictionary<string, string>>>(initialize);
 
@@ -24,18 +24,18 @@ namespace EU4Savegames
         }
 
         /// <summary>
-        /// Gets the localized name of the given tag for the given language.
+        /// Gets the localized name of the given idea group for the given language.
         /// <para/>
-        /// Returns Unknown if the language or tag was not found.
+        /// Returns Unknown if the language or idea group was not found.
         /// </summary>
         /// <param name="language">The name of the language.</param>
-        /// <param name="tag">The tag to resolve.</param>
-        /// <returns>The name of the tag in the given language or Unknown.</returns>
-        public static string GetEntry(string language, string tag)
+        /// <param name="idea">The idea group to resolve.</param>
+        /// <returns>The name of the idea group in the given language or Unknown.</returns>
+        public static string GetEntry(string language, string idea)
         {
             if (languages.Value.ContainsKey(language))
-                if (languages.Value[language].ContainsKey(tag))
-                    return languages.Value[language][tag];
+                if (languages.Value[language].ContainsKey(idea))
+                    return languages.Value[language][idea];
 
             return "Unknown";
         }
@@ -45,16 +45,16 @@ namespace EU4Savegames
             var languages = new Dictionary<string, Dictionary<string, string>>();
 
             var assembly = Assembly.GetExecutingAssembly();
-            var tagFiles = assembly.GetManifestResourceNames()
-                                    .Where(name => name.Contains("tag-names"));
+            var ideaFiles = assembly.GetManifestResourceNames()
+                                    .Where(name => name.Contains("idea-names"));
 
-            foreach (var tagFile in tagFiles)
+            foreach (var ideaFile in ideaFiles)
             {
-                var dashIndex = tagFile.LastIndexOf('-') + 1;
-                var length = tagFile.LastIndexOf('.') - dashIndex;
-                var language = tagFile.Substring(dashIndex, length);
+                var dashIndex = ideaFile.LastIndexOf('-') + 1;
+                var length = ideaFile.LastIndexOf('.') - dashIndex;
+                var language = ideaFile.Substring(dashIndex, length);
 
-                var reader = new StreamReader(assembly.GetManifestResourceStream(tagFile));
+                var reader = new StreamReader(assembly.GetManifestResourceStream(ideaFile));
 
                 languages.Add(language,
                     reader.GetAllLines().Select(line => line.Split(':')).ToDictionary(

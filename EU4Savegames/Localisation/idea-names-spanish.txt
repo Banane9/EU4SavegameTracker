@@ -1,0 +1,273 @@
+﻿aristocracy_ideas:Ideas Aristocráticas
+plutocracy_ideas:Ideas Plutocráticas
+innovativeness_ideas:Ideas de Innovación
+religious_ideas:Ideas Religiosas
+spy_ideas:Ideas de espionaje
+diplomatic_ideas:Ideas Diplomáticas
+offensive_ideas:Ideas Ofensivas
+defensive_ideas:Ideas Defensivas
+trade_ideas:Ideas Comerciales
+economic_ideas:Ideas Económicas
+exploration_ideas:Ideas de Exploración
+naval_ideas:Ideas Navales
+quality_ideas:Ideas de Calidad
+quantity_ideas:Ideas de Cantidad
+expansion_ideas:Ideas de Expansión
+administrative_ideas:Ideas Administrativas
+ENG_ideas:Ideas Inglesas
+SWE_ideas:Ideas Suecas
+RUS_ideas:Ideas Rusas (Moscovia)
+SPA_ideas:Ideas Españolas
+NED_ideas:Ideas Holandesas
+DAN_ideas:Ideas Danesas
+FRA_ideas:Ideas Francesas
+TUR_ideas:Ideas Otomanas
+VEN_ideas:Ideas Venecianas
+PRU_ideas:Ideas Prusianas
+POR_ideas:Ideas Portuguesas
+POL_ideas:Ideas Polacas
+HAB_ideas:Ideas Austríacas
+CHI_ideas:Ideas Chinas
+BAV_ideas:Ideas de Baviera
+PER_ideas:Ideas Persas
+BUR_ideas:Ideas de Borgoña
+GEN_ideas:Ideas Genovesas
+SCO_ideas:Ideas Escocesas
+HUN_ideas:Ideas Húngaras
+JAP_ideas:Ideas Japonesas
+MAM_ideas:Ideas Mamelucas
+NAP_ideas:Ideas Napolitanas
+ARA_ideas:Ideas Aragonesas
+TIM_ideas:Ideas Timúridas
+HSA_ideas:Ideas Hanseáticas
+MLO_ideas:Ideas Milanesas
+BYZ_ideas:Ideas Bizantinas
+VIJ_ideas:Ideas de Vijayanagar
+AYU_ideas:Ideas Ayutthayan
+NOR_ideas:Ideas Noruegas
+OMA_ideas:Ideas de Omán
+KOR_ideas:Ideas Coreanas
+BOH_ideas:Ideas Bohemias
+ITA_ideas:Ideas Italianas
+berber_ideas:Ideas Bereberes
+indian_muslim_ideas:Ideas del Sultanato Indio
+horde_ideas:Ideas de las Hordas
+theocracy_ideas:Ideas Divinas
+default_ideas:Ideas Nacionales
+MCH_ideas:Ideas Manchú
+PAL_ideas:Ideas del Palatinado
+NOV_ideas:Ideas Nóvgorod
+ETH_ideas:Ideas Etíopes
+DAI_ideas:Ideas Dai Viet
+SAV_ideas:Ideas Saboyanas
+SAX_ideas:Ideas Sajonas
+LIT_ideas:Ideas Lituanas
+anatolian_beyliks_ideas:Ideas de los Beylicatos de Anatolia
+MAR_ideas:Ideas Maratha
+TAU_ideas:Ideas Taungu
+rajput_ideas:Ideas Raiput
+GRA_ideas:Ideas Granadinas
+PAP_ideas:Ideas Papales
+daimyo_ideas:Ideas Daimyo
+SER_ideas:Ideas Serbias
+ORI_ideas:Ideas Orissanas
+PUN_ideas:Ideas Punjabi
+RAG_ideas:Ideas Raguseas
+german_ideas:Ideas Germánicas
+RYU_ideas:Ideas Ryukyuanas
+bengali_ideas:Ideas Bengalíes
+TIB_ideas:Ideas Tibetanas
+dravidian_ideas:Ideas del Sur de la India
+ASS_ideas:Ideas Assamesas
+gujarati_ideas:Ideas Guyarat
+TUS_ideas:Ideas Toscanas
+USA_ideas:Ideas Americanas
+SWI_ideas:Ideas Suizas
+irish_ideas:Ideas Irlandesas
+SON_ideas:Ideas Songhai
+BRI_ideas:Ideas Bretonas
+malayan_ideas:Ideas Malayas
+arabian_ideas:Ideas Árabes
+latin_ideas:Ideas Italianas
+NAJ_ideas:Ideas Najdi
+HED_ideas:Ideas Hedjazi
+NPL_ideas:Ideas Nepalís
+KNI_ideas:Ideas de los Caballeros Hospitalarios
+KON_ideas:Ideas Congolesas
+MAL_ideas:Ideas Malíes
+colonial_ideas:Ideas Coloniales
+native_ideas:Ideas de los Nativos
+HUR_ideas:Ideas de los Hurones
+IRO_ideas:Ideas de los Iroqueses
+CHICK_ideas:Ideas de los Chickasaws
+CHE_ideas:Ideas de los Cherokee
+KUR_ideas:Ideas Curonianas
+humanist_ideas:Ideas Humanistas
+influence_ideas:Ideas de Influencia
+maritime_ideas:Ideas Marítimas
+client_ideas:Ideas de Estado Satélite
+central_indic_ideas:Ideas de la India Central
+PRO_ideas:Ideas Provenzales
+MDI_ideas:Ideas Mogadiscias
+TRE_ideas:Ideas de Trebisonda
+swahili_ideas:Ideas Suajilis
+javan_ideas:Ideas Javanas
+CRO_ideas:Ideas Croatas
+CYP_ideas:Ideas Chipriotas
+NAV_ideas:Ideas Navarras
+AZT_ideas:Ideas Aztecas
+DAH_ideas:Ideas Dahomey
+siberian_ideas:Ideas Siberianas
+AJU_ideas:Ideas Ajuuraan
+BOS_ideas:Ideas Bosnias
+MOL_ideas:Ideas Moldavas
+MUG_ideas:Ideas Mogolas
+pacific_northwest_ideas:Ideas del Pacífico Noroccidental
+hausa_ideas:Ideas Hausas
+TAR_ideas:Ideas Tarascanas
+AIR_ideas:Ideas Air
+mossi_ideas:Ideas Mossi
+fulani_jihad_ideas:Ideas Guerra Fulani
+mesoamerican_ideas:Ideas Mesoamericanas
+KAR_ideas:Ideas Karamánidas
+MON_ideas:Ideas Montenegrinas
+ROM_ideas:Ideas Rumanas
+HAM_ideas:Ideas Hamburguesas
+ATH_ideas:Ideas Atenienses
+GOT_ideas:Ideas Gutnish
+FIN_ideas:Ideas Finlandesas
+ALB_ideas:Ideas Albanesas
+PLT_ideas:Ideas Polotskianas
+PRM_ideas:Ideas Pérmicas
+ASH_ideas:Ideas Ashanti
+guajiro_ideas:Ideas Arawak
+MPC_ideas:Ideas Mapuche
+INC_ideas:Ideas Incas
+CHM_ideas:Ideas Chimu
+MCA_ideas:Ideas Muiscanas
+CYA_ideas:Ideas Chachapoyas
+TEU_ideas:Ideas Teutónicas
+BUL_ideas:Ideas Búlgaras
+KIE_ideas:Ideas de Kiev
+NAX_ideas:Ideas Naxianas
+TUA_ideas:Ideas Tapuian
+POM_ideas:Ideas Pomeranias
+KAZ_ideas:Ideas Kazani
+ARM_ideas:Ideas Armenias
+WLS_ideas:Ideas Galesas
+west_african_ideas:Ideas de África Occidental
+andean_ideas:Ideas Andinas
+aymaran_ideas:Ideas Aymaran
+tupi_ideas:Ideas Tupíes
+CUA_ideas:Ideas Charrúas
+GUA_ideas:Ideas Guaraníes
+LXA_ideas:Ideas de Lan Xang
+caucasus_ideas:Ideas Caucásicas
+CIR_ideas:Ideas Circasianas
+KHI_ideas:Ideas Khivan
+BAH_ideas:Ideas Bahmani
+JAJ_ideas:Ideas Siddi
+JNP_ideas:Ideas Jaunpuri
+jerusalem_ideas:Ideas de Jerusalén
+KHM_ideas:Ideas jemer
+ZAZ_ideas:Ideas de Zaporozhia
+shan_ideas:Tradiciones shan
+CAN_ideas:Ideas canadienses
+QUE_ideas:Ideas quebequesas
+MEX_ideas:Ideas mexicanas
+TRA_ideas:Ideas transilvanas
+SUK_ideas:Ideas de Sukhothai
+chinese_ideas:Ideas chinas
+WBG_ideas:Ideas de Wurzburgo
+CEY_ideas:Ideas cingalesas
+CND_ideas:Ideas candar
+BRZ_ideas:Ideas brasileñas
+vindhyan_ideas:Ideas de Vindhya
+kurdish_ideas:Ideas kurdas
+CAB_ideas:Ideas de los caribes
+BEN_ideas:Ideas de Benín
+SHL_ideas:Ideas de Holstein
+BRE_ideas:Ideas de Bremen
+HES_ideas:Ideas de Hesse
+MUN_ideas:Ideas de Münster
+NOL_ideas:Ideas de Northumbria
+ARK_ideas:Ideas de Arakan 
+THU_ideas:Ideas de Turingia
+BTI_ideas:Ideas de Semien
+LNA_ideas:Na Ideas de Lanna
+PGR_ideas:Ideas de Pagarruyung 
+CMI_ideas:Ideas miao
+CAT_ideas:Ideas catalanas
+laotian_ideas:Ideas laosianas
+CHA_ideas:Ideas cham
+BAD_ideas:Ideas de Baden
+SDY_ideas:Ideas de Sadiya
+MLB_ideas:Ideas de Manipur
+somali_ideas:Ideas somalíes
+PEG_ideas:Ideas de Pegu
+KUT_ideas:Ideas de Kutai
+sulawesi_ideas:Ideas de Célebes
+mayan_ideas:Ideas mayas
+KIC_ideas:Ideas kiche
+moluccan_ideas:Ideas de las Molucas
+LDK_ideas:Ideas de Ladakh
+ZIM_ideas:Ideas de Mutapa
+BAL_ideas:Ideas beluchis
+ORL_ideas:Ideas de Orleans
+ORM_ideas:Ideas de Ormuz
+greek_ideas:Ideas griegas
+KGR_ideas:Ideas de Kangra
+KAS_ideas:Ideas yarkandi
+LUX_ideas:Ideas de Luxemburgo
+YOR_ideas:Ideas de Andhra
+LON_ideas:Ideas leonesas
+CYI_ideas:Ideas de Yi
+NZH_ideas:Ideas de Nizhny Novgorod
+SMI_ideas:Ideas de sami
+nubian_ideas:Ideas nubias
+MAZ_ideas:Ideas de Mazovia
+GAL_ideas:Ideas gallegas
+NEV_ideas:Ideas de Nivernais
+french_culture_ideas:Ideas ducales francesas
+MED_ideas:Ideas de Medri Bahri
+CDL_ideas:Ideas de Dali
+JMN_ideas:Ideas de Jan Mayen
+TRT_ideas:Ideas de Tirhuti
+MLW_ideas:Ideas de Malvi
+PAT_ideas:Ideas de Pattani
+KAF_ideas:Ideas de Kaffa
+CEP_ideas:Ideas jónicas
+LOR_ideas:Ideas lorenesas
+WUR_ideas:Ideas de Wurtemberg
+SLO_ideas:Ideas eslovacas
+GLH_ideas:Ideas de la Horda de Oro
+ANS_ideas:Ideas de Ansbach
+OKA_ideas:Ideas de Odoyev
+GHR_ideas:Ideas Garhwali
+DTT_ideas:Ideas de Dithmarschen
+HTK_ideas:Ideas de Hatakeyama
+IMG_ideas:Ideas de Imagawa
+AMA_ideas:Ideas de Amago
+HSK_ideas:Ideas
+UES_ideas:Ideas de Uesugi
+YMN_ideas:Ideas de Yamana
+DTE_ideas:Ideas de Date
+SHN_ideas:Ideas de Shoni
+OGS_ideas:Ideas de Ogasawara
+OTM_ideas:Ideas de Otomo
+OUC_ideas:Ideas de Ouchi
+UTN_ideas:Ideas de Utsunomiya
+ASK_ideas:Ideas de Ashikaga
+TKI_ideas:Ideas de Toki
+STK_ideas:Ideas de Satake
+AKT_ideas:Ideas de Ando
+CBA_ideas:Ideas de Chiba
+SMZ_ideas:Ideas de Shimazu
+ITO_ideas:Ideas de Ito
+ISK_ideas:Ideas de Isshiki
+TTI_ideas:Ideas de Tsutsui
+KKC_ideas:Ideas de Kikuchi
+KNO_ideas:Ideas de Kono
+RFR_ideas:Ideas de Nanbu
+TKD_ideas:Ideas de Takeda
+SBA_ideas:Ideas de Shiba

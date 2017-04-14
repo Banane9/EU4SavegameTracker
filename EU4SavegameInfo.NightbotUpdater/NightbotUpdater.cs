@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EU4Savegames;
+using EU4Savegames.Localisation;
 using EU4Savegames.Objects;
 using Newtonsoft.Json;
 
@@ -18,7 +19,8 @@ namespace EU4SavegameInfo.NightbotUpdater
         private readonly Dictionary<string, string> defaultRequiredCommands = new Dictionary<string, string>
         {
             { "!greatpowers", "Great Powers of the World" },
-            { "!highscores", "Top 10 highest scoring countries" }
+            { "!highscores", "Top 10 highest scoring countries" },
+            { "!ideas", "Idea Group Picks" }
         };
 
         private readonly HttpClient httpClient = new HttpClient();
@@ -117,6 +119,10 @@ namespace EU4SavegameInfo.NightbotUpdater
             {
                 UpdateCommand("!highscores", buildHighscoreResponse(countries));
 
+                var playerCountry = countries.FirstOrDefault(country => country.IsPlayer);
+                if (playerCountry != null)
+                    UpdateCommand("!ideas", buildIdeasResponse(playerCountry));
+
                 if (gpList == null)
                     UpdateCommand("!greatpowers", buildGPResponse(countries));
             }
@@ -186,6 +192,15 @@ namespace EU4SavegameInfo.NightbotUpdater
             var i = 0;
             return "Countries with highest Scores: " + string.Join(", ", countries.OrderByDescending(country => country.Score).Take(10)
                 .Select(country => $"{++i}. {TagNames.GetEntry("english", country.Tag)} ({(int)Math.Round(country.Score)})"));
+        }
+
+        private string buildIdeasResponse(CountriesObject.Country country)
+        {
+            if (country.Ideas.Length < 1)
+                return "No Idea Groups chosen yet!";
+
+            return "Idea Groups: " + string.Join(", ", country.Ideas
+                    .Select(idea => $"{IdeaNames.GetEntry("english", idea.Name)} ({idea.Progress})"));
         }
 
         private async void establishDefaultRequiredCommands()

@@ -1,0 +1,290 @@
+﻿aristocracy_ideas:Aristokratie Ideen
+plutocracy_ideas:Plutokratie-Ideen
+innovativeness_ideas:Innovation Ideen
+religious_ideas:Religiöse Ideen
+spy_ideas:Spionage Ideen
+diplomatic_ideas:Diplomatische Ideen
+offensive_ideas:Offensive Ideen
+defensive_ideas:Defensive Ideen
+trade_ideas:Handel Ideen
+economic_ideas:Wirtschaft Ideen
+exploration_ideas:Entdecker Ideen
+naval_ideas:Seemacht Ideen
+quality_ideas:Qualität Ideen
+quantity_ideas:Quantität Ideen
+expansion_ideas:Expansionistische Ideen
+administrative_ideas:Administrative Ideen
+ENG_ideas:Englische Ideen
+SWE_ideas:Schwedische Ideen
+RUS_ideas:Russische Ideen
+SPA_ideas:Spanische Ideen
+NED_ideas:Niederländische Ideen
+DAN_ideas:Dänische Ideen
+FRA_ideas:Französische Ideen
+TUR_ideas:Osmanische Ideen
+VEN_ideas:Venezianische Ideen
+PRU_ideas:Preußische Ideen
+POR_ideas:Portugiesische Ideen
+POL_ideas:Polnische Ideen
+HAB_ideas:Österreichische Ideen
+CHI_ideas:Chinesische Ideen
+BAV_ideas:Bayerische Ideen
+PER_ideas:Persische Ideen
+BUR_ideas:Burgundische Ideen
+GEN_ideas:Genuesische Ideen
+SCO_ideas:Schottische Ideen
+HUN_ideas:Ungarische Ideen
+JAP_ideas:Japanische Ideen
+MAM_ideas:Mameluckische Ideen
+NAP_ideas:Neapolitanische Ideen
+ARA_ideas:Aragonesische Ideen
+TIM_ideas:Ideen der Timuriden
+MUG_ideas:Mogulische Ideen
+HSA_ideas:Lübsche Ideen
+MLO_ideas:Mailändische Ideen
+BYZ_ideas:Byzantinische Ideen
+VIJ_ideas:Vijaynagari-Ideen
+AYU_ideas:Ayutthaya-Ideen
+NOR_ideas:Norwegische Ideen
+OMA_ideas:Omanische Ideen
+KOR_ideas:Koreanische Ideen
+BOH_ideas:Böhmische Ideen
+ITA_ideas:Italienische Ideen
+MCH_ideas:Mandschurische Ideen
+PAL_ideas:Pfälzische Ideen
+NOV_ideas:Nowgoroder Ideen
+ETH_ideas:Äthiopische Ideen
+DAI_ideas:Dai-Viet-Ideen
+SAV_ideas:Savoyardische Ideen
+SAX_ideas:Sächsische Ideen
+LIT_ideas:Litauische Ideen
+berber_ideas:Berber-Ideen
+indian_muslim_ideas:Ideen der Indischen Sultanate
+horde_ideas:Ideen der Horde
+theocracy_ideas:Theokratische Ideen
+default_ideas:Nationale Ideen
+anatolian_beyliks_ideas:Anatolische Beyliks-Ideen
+MAR_ideas:Marathische Ideen
+TAU_ideas:Taungutische Ideen
+rajput_ideas:Rajputische Ideen
+GRA_ideas:Granadische Ideen
+PAP_ideas:Päpstliche Ideen
+daimyo_ideas:Daimyo-Ideen
+SER_ideas:Serbische Ideen
+ORI_ideas:Orissanische Ideen
+PUN_ideas:Punjabische Ideen
+RAG_ideas:Ragusische Ideen
+german_ideas:Deutsche Ideen
+RYU_ideas:Ryukyu-Ideen
+bengali_ideas:Bengalische Ideen
+TIB_ideas:Tibetische Ideen
+dravidian_ideas:Südindische Ideen
+ASS_ideas:Assamesische Ideen
+gujarati_ideas:Gujaratische Ideen
+TUS_ideas:Toskanische Ideen
+USA_ideas:Amerikanische Ideen
+SWI_ideas:Schweizerische Ideen
+irish_ideas:Irische Ideen
+SON_ideas:Songhaische Ideen
+BRI_ideas:Bretonische Ideen
+malayan_ideas:Malaiische Ideen
+arabian_ideas:Arabische Ideen
+latin_ideas:Italienische Ideen
+NAJ_ideas:Nadschdische Ideen
+HED_ideas:Hedschasische Ideen
+NPL_ideas:Nepalesische Ideen
+KNI_ideas:Johannitische Ideen
+KON_ideas:Kongolesische Ideen
+colonial_ideas:Kolonial-Ideen
+client_ideas:Idee des Satellitenstaats
+MAL_ideas:Malische Ideen
+native_ideas:Eingeborenen-Ideen
+HUR_ideas:Huronen-Ideen
+IRO_ideas:Irokesen-Ideen
+CHICK_ideas:Chickasaw-Ideen
+CHE_ideas:Cherokee-Ideen
+KUR_ideas:Kurische Ideen
+humanist_ideas:Humanistische Ideen
+influence_ideas:Einfluss Ideen
+maritime_ideas:Seefahrt Ideen
+central_indic_ideas:Zentralindische Ideen
+PRO_ideas:Provenzalische Ideen
+MDI_ideas:Mogadischanische Ideen
+TRE_ideas:Trapezunter Ideen
+swahili_ideas:Swahilische Ideen
+javan_ideas:Javanische Ideen
+CRO_ideas:Kroatische Ideen
+CYP_ideas:Zypriotische Ideen
+NAV_ideas:Navarresische Ideen
+AZT_ideas:Aztekische Ideen
+DAH_ideas:Dahomeyische Ideen
+siberian_ideas:Sibirische Ideen
+AJU_ideas:Ajuranische Ideen
+BOS_ideas:Bosnische Ideen
+MOL_ideas:Moldawische Ideen
+pacific_northwest_ideas:Pazifisch-Nordwestliche Ideen
+hausa_ideas:Hausanische Ideen
+TAR_ideas:Taraskische Ideen
+AIR_ideas:Aïrische Ideen
+mossi_ideas:Mossi-Ideen
+fulani_jihad_ideas:Fulbe-Dschihad-Ideen
+mesoamerican_ideas:Mesoamerikanische Ideen
+KAR_ideas:Karamanidische Ideen
+MON_ideas:Montenegrinische Ideen
+RMN_ideas:Rumänische Ideen
+ATH_ideas:Athener Ideen
+GOT_ideas:Gutnische Ideen
+FIN_ideas:Finnische Ideen
+ALB_ideas:Albanische Ideen
+PLT_ideas:Polazker Ideen
+PRM_ideas:Permische Ideen
+ASH_ideas:Aschanti-Ideen
+guajiro_ideas:Arawakische Ideen
+MPC_ideas:Ideen der Mapuche
+HAM_ideas:Hamburger Ideen
+INC_ideas:Inkaische Ideen
+CHM_ideas:Chimu-Ideen
+MCA_ideas:Muiscanische Ideen
+CYA_ideas:Chachapoyanische Ideen
+TEU_ideas:Teutonische Ideen
+BUL_ideas:Bulgarische Ideen
+KIE_ideas:Kiewer Ideen
+NAX_ideas:Naxische Ideen
+TUA_ideas:Tapuische Ideen
+POM_ideas:Pommersche Ideen
+KAZ_ideas:Kasanische Ideen
+ARM_ideas:Armenische Ideen
+WLS_ideas:Walisische Ideen
+west_african_ideas:Westafrikanische Ideen
+andean_ideas:Andische Ideen
+aymaran_ideas:Aymarische Ideen
+tupi_ideas:Tupi-Ideen
+CUA_ideas:Charruanische Ideen
+GUA_ideas:Guarani-Ideen
+LXA_ideas:Ideen von Lan Xang
+caucasus_ideas:Kaukasische Ideen
+CIR_ideas:Tscherkessische Ideen
+KHI_ideas:Chiwanische Ideen
+BAH_ideas:Brahmanische Ideen
+JAJ_ideas:Siddi-Ideen
+JNP_ideas:Jaunpurer Ideen
+jerusalem_ideas:Jerusalemer Ideen
+KHM_ideas:Khmer Ideen
+ZAZ_ideas:Saporoger Ideen
+shan_ideas:Shanische Ideen
+CAN_ideas:Kanadische Ideen
+QUE_ideas:Quebecer Ideen
+MEX_ideas:Mexikanische Ideen
+TRA_ideas:Transsilvanische Ideen
+SUK_ideas:Sukhotaische Ideen
+chinese_ideas:Chinesische Ideen
+WBG_ideas:Würzburger Ideen
+CEY_ideas:Singhalesische Ideen
+CND_ideas:Candarische Idee
+BRZ_ideas:Brasilianische Ideen
+vindhyan_ideas:Vindhyische Ideen
+kurdish_ideas:Kurdische Ideen
+CAB_ideas:Karibische Ideen
+BEN_ideas:Beninische Ideen
+SHL_ideas:Holsteiner Ideen
+BRE_ideas:Bremer Ideen
+HES_ideas:Hessische Ideen
+MUN_ideas:Münsterer Ideen
+NOL_ideas:Northumbrische Ideen
+ARK_ideas:Arakanische Ideen
+THU_ideas:Thüringer Ideen
+BTI_ideas:Simische Ideen
+LNA_ideas:Ideen von Lan Na
+PGR_ideas:Pagaruyungische Ideen
+CMI_ideas:Ideen der Miao
+CAT_ideas:Katalanische Ideen
+laotian_ideas:Laotische Ideen
+CHA_ideas:Chamer Ideen
+BAD_ideas:Badische Ideen
+SDY_ideas:Sutiya-Ideen
+MLB_ideas:Manipur-Ideen
+somali_ideas:Somalische Ideen
+PEG_ideas:Pegu-Ideen
+KUT_ideas:Kutei-Ideen
+sulawesi_ideas:Sulawesi-Ideen
+mayan_ideas:Ideen der Maya
+KIC_ideas:Ideen der Quiché
+moluccan_ideas:Molukkische Ideen
+LDK_ideas:Ladakher Ideen
+ZIM_ideas:Munhumutapa-Ideen
+BAL_ideas:Belutschische Ideen
+ORL_ideas:Orleanische Ideen
+ORM_ideas:Hormuser Ideen
+greek_ideas:Griechische Ideen
+KGR_ideas:Kangraer Ideen
+KAS_ideas:Yarkantische Ideen
+LUX_ideas:Luxemburgische Ideen
+YOR_ideas:Andhraische Ideen
+LON_ideas:Leonesische Ideen
+CYI_ideas:Yi-Ideen
+NZH_ideas:Nischni Nowgoroder Ideen
+SMI_ideas:Sami-Ideen
+nubian_ideas:Nubische Ideen
+MAZ_ideas:Masowische Ideen
+GAL_ideas:Galizische Ideen
+NEV_ideas:Nivernaiser Ideen
+french_culture_ideas:Französisch-herzogliche Ideen
+MED_ideas:Medri-Bahrische Ideen
+CDL_ideas:Dalische Ideen
+JMN_ideas:Jan Mayenische Ideen
+TRT_ideas:Tirhutische Ideen
+ROM_ideas:Römische Ideen
+MNS_ideas:Thomondische Ideen
+SLN_ideas:Sligonische Ideen
+DMS_ideas:Desmondische Ideen
+african_great_lakes_ideas:Ideen der Afrikanischen Großen Seen
+MRA_ideas:Maravi-Ideen
+ANT_ideas:Antemoro-Ideen
+malagasy_ideas:Malagassi-Ideen
+MIR_ideas:Imerina-Ideen
+BTS_ideas:Betsimisaraka-Ideen
+zambezi_ideas:Sambesische Ideen
+congolese_minor_ideas:Kongolesische Ideen
+TBK_ideas:Tumbuka-Ideen
+KUB_ideas:Kuba-Ideen
+LUB_ideas:Luba-Ideen
+LND_ideas:Lunda-Ideen
+RZW_ideas:Butua-Ideen
+MLW_ideas:Malwische Ideen
+PAT_ideas:Pattanische Ideen
+KAF_ideas:Kaffaische Ideen
+CEP_ideas:Ionische Ideen
+LOR_ideas:Lothringische Ideen
+WUR_ideas:Württembergische Ideen
+SLO_ideas:Slowakische Ideen
+GLH_ideas:Ideen der Goldenen Horde
+ANS_ideas:Ansbacher Ideen
+OKA_ideas:Ideen aus Odojew
+GHR_ideas:Garhwali Ideen
+DTT_ideas:Dithmarscher Ideen
+HTK_ideas:Hatakeyama Ideen
+IMG_ideas:Imagawa Ideen
+AMA_ideas:Amago Ideen
+HSK_ideas:Hosokawa Ideen
+UES_ideas:Uesugi Ideen
+YMN_ideas:Yamana Ideen
+DTE_ideas:Date Ideen
+SHN_ideas:Shoni Ideen
+OGS_ideas:Ogasawara Ideen
+OTM_ideas:Otomo Ideen
+OUC_ideas:Ouchi Ideen
+UTN_ideas:Utsunomiya Ideen
+ASK_ideas:Ashikaga Ideen
+TKI_ideas:Toki Ideen
+STK_ideas:Satake Ideen
+AKT_ideas:Ando Ideen
+CBA_ideas:Chiba Ideen
+SMZ_ideas:Shimazu Ideen
+ITO_ideas:Ito Ideen
+ISK_ideas:Isshiki Ideen
+TTI_ideas:Tsutsui Ideen
+KKC_ideas:Kikuchi Ideen
+KNO_ideas:Kono Ideen
+RFR_ideas:Nanbu Ideen
+TKD_ideas:Takeda Ideen
+SBA_ideas:Shiba Ideen
