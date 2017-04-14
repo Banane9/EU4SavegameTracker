@@ -29,7 +29,7 @@ namespace EU4Savegames
             //{
             //underlayingFile.Close();
             SaveLoader.Decode(path, "temp.eu4").Wait();
-            var underlayingFile = File.OpenRead("temp.eu4");
+            underlayingFile = File.OpenRead("temp.eu4");
             //}
 
             try

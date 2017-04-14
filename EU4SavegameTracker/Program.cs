@@ -16,6 +16,7 @@ namespace EU4SavegameTracker
 {
     internal class Program
     {
+        private static DateTime lastUpdate;
         private static Dictionary<string, Timer> timers = new Dictionary<string, Timer>();
         private static UdpClient udpClient;
 
@@ -88,6 +89,11 @@ namespace EU4SavegameTracker
 
         private static async void notifyListener(string name)
         {
+            if (lastUpdate.AddSeconds(10) >= DateTime.Now)
+                return;
+
+            lastUpdate = DateTime.Now;
+
             //if (udpClient == null)
             //    return;
 

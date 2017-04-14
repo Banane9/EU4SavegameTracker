@@ -10,7 +10,7 @@ namespace CEParser
     /// <summary>
     /// Represents the set of binary tokens.
     /// </summary>
-    public class BinaryTokens
+    internal class BinaryTokens
     {
         private readonly Dictionary<ushort, BinaryToken> codes;
 

@@ -1,35 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CEParser;
+using Ionic.Zip;
 
 namespace EU4Savegames
 {
     public static class SaveLoader
     {
-        private static readonly Encoding encoding = Encoding.ASCII; // ANSI
+        private static readonly Encoding encoding = Game.EU4.Encoding;
 
         public static async Task Decode(string inputPath, string outputPath, bool enforceCompression = false)
         {
             string output = "";
 
             MemoryStream stream;
-            ZipArchiveEntry rnw = null;
+            ZipEntry rnw = null;
 
             if (IsCompressedSavegame(inputPath))
             {
                 // Uncompressing savegame
                 stream = (MemoryStream)await unpackToStream(inputPath);
 
-                using (var f = System.IO.File.OpenRead(inputPath))
-                using (var zip = new ZipArchive(f))
+                using (var zip = ZipFile.Read(inputPath))
                 {
-                    rnw = zip.GetEntry("rnw.zip");
+                    rnw = zip["rnw.zip"];
                 }
             }
             else
@@ -86,14 +85,9 @@ namespace EU4Savegames
                     tw.Write(outputArray, pos, output.Length - pos);
             }
 
-            // Random New World or zipped output
+            //Random New World or zipped output
             //if (rnw != null || enforceCompression)
             //{
-            //    if (File.Exists(Path.Combine(Path.GetDirectoryName(outputPath), "meta")))
-            //    {
-            //        if (MessageBox.Show("There is an existing 'meta' file in the output location. Do you want to overwrite it and continue the decoding process?", "Overwrite", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-            //            return;
-            //    }
             //    //using (StreamWriter tw = new StreamWriter(Path.Combine(Path.GetDirectoryName(outputPath), "meta"), false, ANSI, 4096))
             //    //{
             //    //    string metaOutput = output.Substring(0, output.IndexOf("\n", output.IndexOf("not_observer")));
@@ -184,10 +178,9 @@ namespace EU4Savegames
         private static async Task<Stream> unpackToStream(string path)
         {
             // Unzip the save file
-            using (var file = System.IO.File.OpenRead(path))
-            using (var zip = new ZipArchive(file, ZipArchiveMode.Read))
+            using (var zip = ZipFile.Read(path))
             {
-                var e = zip.GetEntry(Path.GetFileName(path)) ?? zip.GetEntry("game.eu4");
+                var e = zip[Path.GetFileName(path)] ?? zip["game.eu4"];
                 MemoryStream ms = new MemoryStream();
                 await Task.Run(() =>
                 {
@@ -196,7 +189,7 @@ namespace EU4Savegames
                     {
                         try
                         {
-                            e.Open().CopyTo(ms);
+                            e.OpenReader().CopyTo(ms);
                             break; // success!
                         }
                         catch

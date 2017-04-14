@@ -67,7 +67,7 @@ namespace CEParser
             get; private set;
         }
 
-        public Ironmelt(string gameToken, BinaryTokens tokens, Encoding encoding)
+        internal Ironmelt(string gameToken, BinaryTokens tokens, Encoding encoding)
         {
             game = gameToken;
             strlen = gameToken.Length + 3;

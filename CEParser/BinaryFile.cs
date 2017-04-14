@@ -25,11 +25,8 @@ namespace CEParser
 
         public BinaryFile(MemoryStream stream, string gameToken, Encoding encoding) : base()
         {
-            if (gameToken == null)
-                throw new NullReferenceException("Null token passed to BinaryFile creator.");
-
-            this.token = gameToken;
             this.stream = stream;
+            token = gameToken ?? throw new NullReferenceException("Null token passed to BinaryFile creator.");
             //this.Decoder = new Ironmelt(gameToken, Ironmelt.ReadTokensFile(gameToken + "bin.csv"), encoding);
         }
 
@@ -42,6 +39,7 @@ namespace CEParser
 
             try
             {
+                stream.Position = 0;
                 while (stream.Position < sl)
                 {
                     if (stream.Position % 100000 == 0) OnFileParseProgress(stream.Position / (float)sl);

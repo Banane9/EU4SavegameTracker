@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
 using System.Threading.Tasks;
 
 namespace CEParser
@@ -32,7 +31,6 @@ namespace CEParser
 
         public File()
         {
-            Bytes.Initialize();
             Errors = new List<ParseError>();
 
             Root = new Node();

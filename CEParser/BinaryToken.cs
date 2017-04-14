@@ -8,7 +8,7 @@ namespace CEParser
     /// <summary>
     /// Represents a binary token, i.e. 2-byte portion of the file.
     /// </summary>
-    public class BinaryToken
+    internal sealed class BinaryToken
     {
         /// <summary>
         /// Byte array (in ANSI coding) representation of the token.

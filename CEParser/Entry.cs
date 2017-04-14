@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CEParser
 {
-    public class Entry : Entity
+    internal class Entry : Entity
     {
         private bool quoted;
         private string value;
