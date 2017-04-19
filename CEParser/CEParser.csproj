@@ -45,6 +45,9 @@
     <AssemblyOriginatorKeyFile>Chronicle_key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -55,36 +58,40 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attribute.cs" />
-    <Compile Include="BinaryFile.cs" />
-    <Compile Include="BinaryToken.cs" />
-    <Compile Include="BinaryTokens.cs" />
-    <Compile Include="Bytes.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="Entry.cs" />
-    <Compile Include="File.cs" />
+    <Compile Include="Files\CEBinaryDecoder.cs" />
+    <Compile Include="Files\CEDecoder.cs" />
+    <Compile Include="Files\CESavegame.cs" />
+    <Compile Include="Files\FileParsingProgressEventArgs.cs" />
+    <Compile Include="Files\CETextDecoder.cs" />
+    <Compile Include="Tokenization\Attribute.cs" />
+    <Compile Include="Tokenization\BinaryToken.cs" />
+    <Compile Include="Tokenization\BinaryTokens.cs" />
+    <Compile Include="Tokenization\Entity.cs" />
+    <Compile Include="Tokenization\Entry.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Ironmelt.cs" />
-    <Compile Include="Node.cs" />
-    <Compile Include="Nodesets.cs" />
+    <Compile Include="Tokenization\Node.cs" />
+    <Compile Include="Tokenization\Nodesets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamReaderExtensions.cs" />
-    <Compile Include="TextFile.cs" />
+    <Compile Include="Tokenization\ParseError.cs" />
+    <Compile Include="Tokenization\ParsePhase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Chronicle_key.snk" />
-    <EmbeddedResource Include="hoi4bin.csv">
+    <EmbeddedResource Include="Tokenization\hoi4bin.csv">
       <LogicalName>CEParser.hoi4bin.csv</LogicalName>
       <DependentUpon>BinaryTokens.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ck2bin.csv">
+    <EmbeddedResource Include="Tokenization\ck2bin.csv">
       <LogicalName>CEParser.ck2bin.csv</LogicalName>
       <DependentUpon>BinaryTokens.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="eu4bin.csv">
+    <EmbeddedResource Include="Tokenization\eu4bin.csv">
       <LogicalName>CEParser.eu4bin.csv</LogicalName>
       <DependentUpon>BinaryTokens.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ironmelt.ico" />

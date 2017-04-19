@@ -76,8 +76,8 @@ namespace EU4SavegameTracker
 
             Console.WriteLine($"Tracking saves at {savegamePath}");
 
-            if (!string.IsNullOrWhiteSpace(hostname) && port > 0)
-                udpClient = new UdpClient(hostname, port);
+            //if (!string.IsNullOrWhiteSpace(hostname) && port > 0)
+            //    udpClient = new UdpClient(hostname, port);
 
             var fsw = new FileSystemWatcher(savegamePath, "*.eu4") { EnableRaisingEvents = true };
             fsw.Created += fsw_Created;

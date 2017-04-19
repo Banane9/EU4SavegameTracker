@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EU4Savegames;
-using Microsoft.Win32;
 
 namespace EU4SavegameInfo.NightbotUpdater
 {

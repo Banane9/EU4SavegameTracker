@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CEParser;
+using CEParser.Files;
 using Ionic.Zip;
 
 namespace EU4Savegames
@@ -50,7 +51,7 @@ namespace EU4Savegames
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
             Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
 
-            var file = new BinaryFile(stream, Game.EU4, encoding);
+            var file = new BinaryFile(stream, Game.EU4);
             file.Decoder.EnforceDateDatatype = true;
             await file.ParseAsync();
 

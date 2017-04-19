@@ -6,6 +6,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using CEParser;
+using CEParser.Tokenization;
 using Microsoft.Win32;
 
 namespace CEParser
