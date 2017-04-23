@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CEParser.Decoding;
 
-using CEParser.Decoding;
-
+using CEParser.Decoding.Model;
 using Ionic.Zip;
 
 namespace CEParser

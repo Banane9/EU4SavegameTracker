@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CEParser.Decoding
+namespace CEParser.Decoding.Model
 {
     public class Node : Entity
     {

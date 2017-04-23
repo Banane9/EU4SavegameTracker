@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CEParser.Decoding;
+using CEParser.Decoding.Model;
 
 namespace CEParser.Decoding
 {

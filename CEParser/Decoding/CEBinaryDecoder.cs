@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using CEParser.Decoding;
+using CEParser.Decoding.Model;
 
 namespace CEParser.Decoding
 {
@@ -102,7 +103,7 @@ namespace CEParser.Decoding
 
         private void AddAttribute(DecodeResult lhs, DecodeResult rhs)
         {
-            var n = new Decoding.Attribute(hierarchy.Peek(), lhs.Token, rhs.Token, rhs.Quoted);
+            var n = new Model.Attribute(hierarchy.Peek(), lhs.Token, rhs.Token, rhs.Quoted);
             if (lhs.Unknown != null)
                 AddError((int)stream.Position, "Unknown token", lhs.Unknown, 0, n);
             if (rhs.Unknown != null)

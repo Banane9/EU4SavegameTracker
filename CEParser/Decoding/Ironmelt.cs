@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Reflection;
 using CEParser.Decoding;
+using CEParser.Decoding.Model;
 
 namespace CEParser.Decoding
 {

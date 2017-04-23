@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using CEParser.Decoding;
+using CEParser.Decoding.Model;
 
 namespace CEParser.Decoding
 {
@@ -309,7 +310,7 @@ namespace CEParser.Decoding
 
         private void AddAttribute(string name, string value, bool quoted)
         {
-            var n = new Decoding.Attribute(hierarchy.Peek(), name, value, quoted);
+            var n = new Model.Attribute(hierarchy.Peek(), name, value, quoted);
         }
 
         private void AddContainer(string name)
