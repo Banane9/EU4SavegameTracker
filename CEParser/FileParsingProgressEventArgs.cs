@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CEParser.Files
+namespace CEParser
 {
-    public sealed class FileParsingProgressEventArgs : EventArgs
+    public sealed class SaveDecodingProgressEventArgs : EventArgs
     {
         public double Progress { get; }
 
-        public FileParsingProgressEventArgs(double progress)
+        public SaveDecodingProgressEventArgs(double progress)
         {
             Progress = progress;
         }

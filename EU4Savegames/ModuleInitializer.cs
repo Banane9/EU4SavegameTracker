@@ -3,6 +3,7 @@ using System.Reflection;
 using EU4Savegames.Objects;
 using System.Linq;
 using System.IO;
+using System.Collections;
 
 /// <summary>
 /// Used by the ModuleInit. All code inside the Initialize method is ran as soon as the assembly is loaded.
@@ -10,7 +11,7 @@ using System.IO;
 public static class ModuleInitializer
 {
     private static readonly Type savegameObjectType = typeof(SavegameObject);
-    private static readonly Type streamReaderType = typeof(StreamReader);
+    private static readonly Type streamReaderType = typeof(IEnumerator);
 
     /// <summary>
     /// Initializes the module.

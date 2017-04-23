@@ -111,7 +111,7 @@ namespace EU4SavegameTracker
                 return;
             }
 
-            var gpList = save?.GetSavegameObjects<GreatPowersObject>().SingleOrDefault();
+            var gpList = save?.GetSavegameObjects<CountriesObject>()?.SingleOrDefault()?.Countries?.OrderByDescending(c => c.GPScore).Take(8).ToArray();
             if (gpList == null)
                 return;
 

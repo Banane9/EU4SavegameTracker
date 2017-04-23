@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CEParser.Tokenization
+namespace CEParser.Decoding
 {
     public class Nodesets
     {

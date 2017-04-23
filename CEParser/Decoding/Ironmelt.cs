@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
 using System.IO;
-
 using System.Text;
 using System.Reflection;
-using CEParser.Tokenization;
+using CEParser.Decoding;
 
-namespace CEParser
+namespace CEParser.Decoding
 {
-    public enum DataType
+    internal enum DataType
     {
         Unspecified, Integer, Float, Boolean, String, Float5, Date, Variable
     }
 
-    public enum DecodePhase
+    internal enum DecodePhase
     {
         Looking, LookingForValue, RecordingString
     }
 
-    public struct DecodeResult
+    internal struct DecodeResult
     {
         public bool Quoted;
         public string Token;
@@ -34,7 +33,7 @@ namespace CEParser
         }
     }
 
-    public class Ironmelt
+    internal class Ironmelt
     {
         private static Dictionary<int, string> dateLookup = new Dictionary<int, string>();
         private static Dictionary<int, string> float5Lookup = new Dictionary<int, string>();

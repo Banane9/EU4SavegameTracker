@@ -1,4 +1,4 @@
-﻿namespace CEParser.Tokenization
+﻿namespace CEParser.Decoding
 {
     internal enum ParsePhase
     {

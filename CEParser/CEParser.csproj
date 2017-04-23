@@ -58,36 +58,36 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Files\CEBinaryDecoder.cs" />
-    <Compile Include="Files\CEDecoder.cs" />
-    <Compile Include="Files\CESavegame.cs" />
-    <Compile Include="Files\FileParsingProgressEventArgs.cs" />
-    <Compile Include="Files\CETextDecoder.cs" />
-    <Compile Include="Tokenization\Attribute.cs" />
-    <Compile Include="Tokenization\BinaryToken.cs" />
-    <Compile Include="Tokenization\BinaryTokens.cs" />
-    <Compile Include="Tokenization\Entity.cs" />
-    <Compile Include="Tokenization\Entry.cs" />
+    <Compile Include="Decoding\CEBinaryDecoder.cs" />
+    <Compile Include="Decoding\CEDecoder.cs" />
+    <Compile Include="CESavegame.cs" />
+    <Compile Include="FileParsingProgressEventArgs.cs" />
+    <Compile Include="Decoding\CETextDecoder.cs" />
+    <Compile Include="Decoding\Attribute.cs" />
+    <Compile Include="Decoding\BinaryToken.cs" />
+    <Compile Include="Decoding\BinaryTokens.cs" />
+    <Compile Include="Decoding\Entity.cs" />
+    <Compile Include="Decoding\Entry.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Ironmelt.cs" />
-    <Compile Include="Tokenization\Node.cs" />
-    <Compile Include="Tokenization\Nodesets.cs" />
+    <Compile Include="Decoding\Ironmelt.cs" />
+    <Compile Include="Decoding\Node.cs" />
+    <Compile Include="Decoding\Nodesets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StreamReaderExtensions.cs" />
-    <Compile Include="Tokenization\ParseError.cs" />
-    <Compile Include="Tokenization\ParsePhase.cs" />
+    <Compile Include="Decoding\ParseError.cs" />
+    <Compile Include="Decoding\ParsePhase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Chronicle_key.snk" />
-    <EmbeddedResource Include="Tokenization\hoi4bin.csv">
+    <EmbeddedResource Include="Decoding\hoi4bin.csv">
       <LogicalName>CEParser.hoi4bin.csv</LogicalName>
       <DependentUpon>BinaryTokens.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tokenization\ck2bin.csv">
+    <EmbeddedResource Include="Decoding\ck2bin.csv">
       <LogicalName>CEParser.ck2bin.csv</LogicalName>
       <DependentUpon>BinaryTokens.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tokenization\eu4bin.csv">
+    <EmbeddedResource Include="Decoding\eu4bin.csv">
       <LogicalName>CEParser.eu4bin.csv</LogicalName>
       <DependentUpon>BinaryTokens.cs</DependentUpon>
     </EmbeddedResource>

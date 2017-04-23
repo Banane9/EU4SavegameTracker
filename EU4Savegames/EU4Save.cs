@@ -9,54 +9,20 @@ using EU4Savegames.Objects;
 
 namespace EU4Savegames
 {
-    public sealed class EU4Save : IDisposable
+    public sealed class EU4Save
     {
-        private readonly Stream savegame;
         private readonly Dictionary<Type, List<SavegameObject>> savegameObjects = new Dictionary<Type, List<SavegameObject>>();
-        private readonly Stream underlayingFile;
+        private string savegame;
 
         public IEnumerable<Type> SavegameObjectTypes
         {
             get { return savegameObjects.Keys.ToArray(); }
         }
 
-        public StreamReader SaveReader { get; }
-
-        public EU4Save(string path, bool manualRead = false)
+        public EU4Save(string path)
         {
-            //underlayingFile = File.OpenRead(path);
-            //if (SaveLoader.IsBinarySavegame(underlayingFile))
-            //{
-            //underlayingFile.Close();
-            SaveLoader.Decode(path, "temp.eu4").Wait();
-            underlayingFile = File.OpenRead("temp.eu4");
-            //}
-
-            try
-            {
-                var zipArchive = new ZipArchive(underlayingFile);
-
-                savegame = zipArchive.GetEntry(Path.GetFileName(path)).Open();
-            }
-            catch (InvalidDataException)
-            {
-                underlayingFile.Position = 0;
-                savegame = underlayingFile;
-            }
-
-            SaveReader = new StreamReader(savegame, Encoding.ASCII);
-
-            if (manualRead)
-                return;
-
+            savegame = SaveLoader.Decode(path, "temp.eu4").Result;
             Read();
-            Close();
-        }
-
-        public void Close()
-        {
-            savegame.Close();
-            underlayingFile.Close();
         }
 
         public TSavegame[] GetSavegameObjects<TSavegame>() where TSavegame : SavegameObject
@@ -71,18 +37,28 @@ namespace EU4Savegames
 
         public void Read()
         {
-            string line;
-            while ((line = SaveReader.ReadLine()) != null)
+            var openedBraces = 0;
+            var split = savegame.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var enumerator = split.GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                if (!SavegameObject.TryGetReaderForTag(getTag(line), out var readTagToObject))
+                var line = (string)enumerator.Current;
+
+                if (openedBraces > 0)
                 {
-                    if (line.Contains('{'))
-                        SaveReader.ReadTillMatchingClosingBrace();
+                    if (line.Contains("}"))
+                        --openedBraces;
 
                     continue;
                 }
 
-                var savegameObject = readTagToObject(SaveReader);
+                if (line.Contains('{'))
+                    ++openedBraces;
+
+                if (!SavegameObject.TryGetReaderForTag(getTag(line), out var readTagToObject))
+                    continue;
+
+                var savegameObject = readTagToObject(enumerator);
                 var savegameObjectType = savegameObject.GetType();
 
                 if (!savegameObjects.ContainsKey(savegameObjectType))
@@ -96,30 +72,5 @@ namespace EU4Savegames
         {
             return line.Trim().Split('=')[0];
         }
-
-        #region IDisposable Support
-
-        private bool disposedValue = false;
-
-        public void Dispose()
-        {
-            dispose(true);
-        }
-
-        private void dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    savegame.Dispose();
-                    underlayingFile.Dispose();
-                }
-
-                disposedValue = true;
-            }
-        }
-
-        #endregion IDisposable Support
     }
 }

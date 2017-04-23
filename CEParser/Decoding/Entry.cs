@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CEParser.Tokenization
+namespace CEParser.Decoding
 {
     internal class Entry : Entity
     {

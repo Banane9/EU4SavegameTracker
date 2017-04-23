@@ -6,7 +6,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using CEParser;
-using CEParser.Tokenization;
+using CEParser.Decoding;
 using Microsoft.Win32;
 
 namespace CEParser
@@ -91,9 +91,44 @@ namespace CEParser
         public abstract string SteamId { get; }
 
         /// <summary>
-        /// Gets the <see cref="CEParser.BinaryTokens"/> used by the game.
+        /// Gets the length of the longest header of all <see cref="Games"/>.
+        /// </summary>
+        internal static int MaxHeaderLength
+        {
+            get
+            {
+                int headerLength = 0;
+                foreach (var game in Games)
+                    headerLength = Math.Max(headerLength, Math.Max(game.TextHeaderLength, game.BinHeaderLength));
+
+                return headerLength;
+            }
+        }
+
+        /// <summary>
+        /// Gets the <see cref="CEParser.Decoding.BinaryTokens"/> used by the game.
         /// </summary>
         internal BinaryTokens BinaryTokens { get; }
+
+        /// <summary>
+        /// Gets the header used in binary files of the game.
+        /// </summary>
+        internal string BinHeader => Extension + "bin";
+
+        /// <summary>
+        /// Gets the number of bytes used for the header used in binary files of the game.
+        /// </summary>
+        internal int BinHeaderLength => Encoding.GetByteCount(BinHeader);
+
+        /// <summary>
+        /// Gets the header used in text files of the game.
+        /// </summary>
+        internal string TextHeader => Extension + "txt";
+
+        /// <summary>
+        /// Gets the number of bytes used for the header used in text files of the game.
+        /// </summary>
+        internal int TextHeaderLength => Encoding.GetByteCount(TextHeader);
 
         static Game()
         {

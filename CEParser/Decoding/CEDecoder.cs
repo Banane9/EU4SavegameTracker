@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CEParser.Tokenization;
+using CEParser.Decoding;
 
-namespace CEParser.Files
+namespace CEParser.Decoding
 {
-    public abstract class CEDecoder
+    internal abstract class CEDecoder
     {
         protected Stack<Node> hierarchy = new Stack<Node>();
 
@@ -18,6 +18,8 @@ namespace CEParser.Files
         {
             get; private set;
         }
+
+        public Game Game { get; }
 
         public Node Root
         {
@@ -29,7 +31,7 @@ namespace CEParser.Files
             get { return nodesets.Get(name); }
         }
 
-        protected CEDecoder()
+        internal CEDecoder(Game game)
         {
             Errors = new List<ParseError>();
 
@@ -53,12 +55,34 @@ namespace CEParser.Files
 
         public abstract void Parse();
 
-        public async Task ParseAsync()
+        public Task ParseAsync()
         {
-            await Task.Run(() =>
+            return Task.Run(() =>
             {
                 Parse();
             });
+        }
+
+        internal static CEDecoder GetDecoder(Stream data)
+        {
+            var buffer = new byte[Game.MaxHeaderLength];
+
+            data.Position = 0;
+            data.Read(buffer, 0, buffer.Length);
+
+            foreach (var game in Game.Games)
+            {
+                var txtHeader = game.Encoding.GetString(buffer, 0, game.TextHeaderLength);
+                var binHeader = game.Encoding.GetString(buffer, 0, game.BinHeaderLength);
+
+                if (game.TextHeader.Equals(txtHeader, StringComparison.InvariantCultureIgnoreCase))
+                    return new CETextDecoder(data, game);
+
+                if (game.BinHeader.Equals(binHeader, StringComparison.InvariantCultureIgnoreCase))
+                    return new CEBinaryDecoder(data, game);
+            }
+
+            return null;
         }
 
         protected static StreamReader GetStreamReader(string path)
@@ -390,12 +414,12 @@ namespace CEParser.Files
 
         internal void OnFileParseProgress(double progress)
         {
-            FileParseProgress?.Invoke(this, new FileParsingProgressEventArgs(progress));
+            FileParseProgress?.Invoke(this, new SaveDecodingProgressEventArgs(progress));
         }
 
         public event FileParseProgressHandler FileParseProgress;
 
-        public delegate void FileParseProgressHandler(object source, FileParsingProgressEventArgs e);
+        public delegate void FileParseProgressHandler(object source, SaveDecodingProgressEventArgs e);
 
         #endregion Event handling
     }

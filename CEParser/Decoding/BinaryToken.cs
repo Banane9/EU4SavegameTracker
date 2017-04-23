@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CEParser.Decoding;
 
-namespace CEParser.Tokenization
+namespace CEParser.Decoding
 {
     /// <summary>
     /// Represents a binary token, i.e. 2-byte portion of the file.

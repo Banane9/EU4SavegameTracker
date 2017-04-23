@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CEParser.Tokenization
+namespace CEParser.Decoding
 {
     public sealed class ParseError
     {

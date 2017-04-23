@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -15,20 +16,24 @@ namespace EU4Savegames.Objects
     {
         public Country[] Countries { get; private set; }
 
-        public CountriesObject(StreamReader reader)
+        public CountriesObject(IEnumerator reader)
             : base(reader)
         {
             var countries = new List<Country>();
 
-            string line;
-            while ((line = reader.ReadLine()) != null)
+            while (reader.MoveNext())
             {
-                if (line.Contains('}'))
-                    break;
+                var line = (string)reader.Current;
 
                 var split = line.Trim().Split('=');
                 if (split[0].Length == 3)
+                {
                     countries.Add(new Country(split[0], reader));
+                    continue;
+                }
+
+                if (line.Contains('}'))
+                    break;
             }
 
             Countries = countries.ToArray();
@@ -43,13 +48,28 @@ namespace EU4Savegames.Objects
             public float Score { get; private set; }
             public string Tag { get; private set; }
 
-            public Country(string tag, StreamReader reader)
+            public Country(string tag, IEnumerator reader)
             {
                 Tag = tag;
 
-                string line;
-                while ((line = reader.ReadLine()) != null && !line.Contains("}"))
+                var openedBraces = 0;
+                while (reader.MoveNext())
                 {
+                    var line = (string)reader.Current;
+                    if (line.Contains("}"))
+                        if (openedBraces == 0)
+                            break;
+                        else
+                            --openedBraces;
+
+                    if (openedBraces > 0)
+                    {
+                        if (line.Contains('{'))
+                            ++openedBraces;
+
+                        continue;
+                    }
+
                     var split = line.Trim().Split('=');
                     switch (split[0])
                     {
@@ -67,19 +87,22 @@ namespace EU4Savegames.Objects
 
                         case "active_idea_groups":
                             var ideas = new List<Idea>();
-                            while ((line = reader.ReadLine()) != null && !line.Contains('}'))
+                            while (reader.MoveNext())
+                            {
+                                line = (string)reader.Current;
+                                if (line.Contains('}'))
+                                    break;
+
                                 if (line.Split('=').Length == 2)
                                     ideas.Add(new Idea(line));
+                            }
 
                             Ideas = ideas.ToArray();
                             break;
                     }
 
                     if (line.Contains('{'))
-                    {
-                        reader.ReadTillMatchingClosingBrace();
-                        continue;
-                    }
+                        ++openedBraces;
                 }
             }
 

@@ -2,33 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using CEParser.Tokenization;
+using CEParser.Decoding;
 
-namespace CEParser.Files
+namespace CEParser.Decoding
 {
     internal sealed class CETextDecoder : CEDecoder
     {
-        private StreamReader stream;
+        private readonly StreamReader stream;
+
         internal bool LineFeed { get; private set; }
 
-        /// <summary>
-        /// Creates a new file structure.
-        /// </summary>
-        /// <param name="path">Path to the file</param>
-        public CETextDecoder(StreamReader stream) : base()
+        public CETextDecoder(Stream data, Game game)
+            : base(game)
         {
-            this.stream = stream;
+            stream = new StreamReader(data, game.Encoding);
             DetectLineFeed();
-        }
-
-        public CETextDecoder(MemoryStream stream) : base()
-        {
-            this.stream = new StreamReader(stream, System.Text.Encoding.GetEncoding(1250), true);
-            DetectLineFeed();
-        }
-
-        public CETextDecoder(string path) : this(GetStreamReader(path))
-        {
         }
 
         /// <summary>
@@ -321,7 +309,7 @@ namespace CEParser.Files
 
         private void AddAttribute(string name, string value, bool quoted)
         {
-            var n = new Tokenization.Attribute(hierarchy.Peek(), name, value, quoted);
+            var n = new Decoding.Attribute(hierarchy.Peek(), name, value, quoted);
         }
 
         private void AddContainer(string name)

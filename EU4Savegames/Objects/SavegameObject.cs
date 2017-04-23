@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace EU4Savegames.Objects
     {
         private static readonly Dictionary<string, ReadTagToObjectFunc> tagToObjects = new Dictionary<string, ReadTagToObjectFunc>();
 
-        protected SavegameObject(StreamReader reader)
+        protected SavegameObject(IEnumerator reader)
         { }
 
         public static void AddTagToObjectReader(string tag, ReadTagToObjectFunc readTagToObject)
@@ -36,6 +37,6 @@ namespace EU4Savegames.Objects
             return true;
         }
 
-        public delegate SavegameObject ReadTagToObjectFunc(StreamReader reader);
+        public delegate SavegameObject ReadTagToObjectFunc(IEnumerator reader);
     }
 }

@@ -108,23 +108,17 @@ namespace EU4SavegameInfo.NightbotUpdater
 
         public void Update(EU4Save save)
         {
-            var gpList = save.GetSavegameObjects<GreatPowersObject>().SingleOrDefault()?.GreatPowers;
-
-            if (gpList != null)
-                UpdateCommand("!greatpowers", buildGPResponse(gpList));
-
             var countries = save.GetSavegameObjects<CountriesObject>().SingleOrDefault()?.Countries;
 
             if (countries != null)
             {
                 UpdateCommand("!highscores", buildHighscoreResponse(countries));
 
+                UpdateCommand("!greatpowers", buildGPResponse(countries));
+
                 var playerCountry = countries.FirstOrDefault(country => country.IsPlayer);
                 if (playerCountry != null)
                     UpdateCommand("!ideas", buildIdeasResponse(playerCountry));
-
-                if (gpList == null)
-                    UpdateCommand("!greatpowers", buildGPResponse(countries));
             }
         }
 
@@ -179,12 +173,6 @@ namespace EU4SavegameInfo.NightbotUpdater
             var i = 0;
             return "Great Powers: " + string.Join(", ", countries.OrderByDescending(country => country.GPScore).Take(8)
                 .Select(country => $"{++i}. {TagNames.GetEntry("english", country.Tag)} ({(int)Math.Round(country.GPScore)})"));
-        }
-
-        private string buildGPResponse(GreatPowersObject.GreatPower[] gpList)
-        {
-            return "Great Powers: " + string.Join(", ", gpList.OrderBy(gp => gp.Rank)
-                .Select(gp => $"{gp.Rank}. {TagNames.GetEntry("english", gp.Tag)} ({(int)Math.Round(gp.Score)})"));
         }
 
         private string buildHighscoreResponse(CountriesObject.Country[] countries)

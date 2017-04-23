@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using CEParser.Tokenization;
+using CEParser.Decoding;
 
-namespace CEParser.Files
+namespace CEParser.Decoding
 {
     internal sealed class CEBinaryDecoder : CEDecoder
     {
-        private MemoryStream stream;
-        private string token;
-        public Ironmelt Decoder { get; private set; }
+        private readonly Stream stream;
+        private readonly string token;
+        public Ironmelt Decoder { get; }
 
         /// <summary>
         /// Creates a new file structure.
         /// </summary>
-        public CEBinaryDecoder(MemoryStream stream, Game game)
+        public CEBinaryDecoder(Stream stream, Game game)
+            : base(game)
         {
             this.stream = stream;
             token = game.Extension;
-            Decoder = new Ironmelt(token, game.BinaryTokens, game.Encoding);
+            Decoder = new Ironmelt(token, game.BinaryTokens, game.Encoding) { EnforceDateDatatype = true };
         }
 
         public override void Parse()
@@ -101,7 +102,7 @@ namespace CEParser.Files
 
         private void AddAttribute(DecodeResult lhs, DecodeResult rhs)
         {
-            Attribute n = new Attribute(hierarchy.Peek(), lhs.Token, rhs.Token, rhs.Quoted);
+            var n = new Decoding.Attribute(hierarchy.Peek(), lhs.Token, rhs.Token, rhs.Quoted);
             if (lhs.Unknown != null)
                 AddError((int)stream.Position, "Unknown token", lhs.Unknown, 0, n);
             if (rhs.Unknown != null)
