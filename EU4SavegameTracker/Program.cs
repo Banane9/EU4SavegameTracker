@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using EU4Savegames;
 using EU4Savegames.Localisation;
 using EU4Savegames.Objects;
+using Ionic.Zip;
+using Microsoft.FSharp.Core;
 using Newtonsoft.Json;
 
 namespace EU4SavegameTracker
@@ -55,6 +57,9 @@ namespace EU4SavegameTracker
             string hostname = "";
             var savegamePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 "Paradox Interactive", "Europa Universalis IV", "save games");
+
+            var zip = ZipFile.Read(Path.Combine(savegamePath, "basileus n shit.eu4"));
+            var result = Pfarah.ParaValue.LoadBinary(zip[0].OpenReader(), new Dictionary<short, string>(), new FSharpOption<string>("EU4bin"));
 
             if (args.Length == 1 && args[0].Split(':').Length == 2 && int.TryParse(args[0].Split(':')[1], out int pPort))
             {

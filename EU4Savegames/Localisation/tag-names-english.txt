@@ -4,7 +4,7 @@ WAR:Warsangali
 HOB:Hobyo
 GLE:Geledi
 KAF:Kaffa
-MED:MedriBahri
+MED:Medri Bahri
 HAR:Harar
 AFA:Aussa
 ALO:Alodia
@@ -46,7 +46,7 @@ NDO:Ndongo
 ANU:Ainu
 ADA:Adal
 ADE:Yemen
-AKK:AqQoyunlu
+AKK:Aq Qoyunlu
 ALB:Albania
 ALG:Algiers
 ALH:Haasa
@@ -111,7 +111,7 @@ CRN:Cornwall
 CRO:Croatia
 CRT:Crete
 CYP:Cyprus
-DAI:DaiViet
+DAI:Dai Viet
 DAN:Denmark
 DAU:Dauphine
 DLH:Delhi
@@ -126,13 +126,13 @@ FLA:Flanders
 FOI:Foix
 FRA:France
 FRI:Friesland
-GBR:GreatBritain
+GBR:Great Britain
 GDW:Gondwana
 GEL:Gelre
 GEN:Genoa
 GEO:Georgia
 GER:Germany
-GOL:GreatHorde
+GOL:Great Horde
 GOT:Gotland
 GRA:Granada
 GRE:Greece
@@ -155,13 +155,13 @@ ITA:Italy
 JAP:Japan
 KAR:Karaman
 KAZ:Kazan
-KBO:KanemBornu
+KBO:Kanem Bornu
 KHA:Mongolia
 KHD:Khandesh
 KHI:Khiva
 KHM:Khmer
 KLE:Cleves
-KNI:TheKnights
+KNI:The Knights
 KOK:Kokkand
 KOL:Cologne
 KON:Kongo
@@ -171,18 +171,18 @@ KSH:Kashmir
 KUR:Kurland
 KZH:Kazakh
 LAN:Florence
-LAP:LaPlata
+LAP:La Plata
 LEI:Leinster
 LIE:Liege
 LIT:Lithuania
-LNA:LanNa
+LNA:Lan Na
 LOA:Loango
 LOR:Lorraine
 LOU:Louisiana
-LUA:LuangPrabang
+LUA:Luang Prabang
 LUN:Lüneburg
 LUX:Luxembourg
-LXA:LanXang
+LXA:Lan Xang
 MAD:Madurai
 MAG:Magdeburg
 MAI:Mainz
@@ -229,8 +229,8 @@ OMA:Oman
 ORI:Orissa
 ORL:Orleans
 OYO:Oyo
-PAL:ThePalatinate
-PAP:ThePapalState
+PAL:The Palatinate
+PAP:The Papal State
 PAR:Parma
 PAT:Pattani
 PEG:Pegu
@@ -245,7 +245,7 @@ PRO:Provence
 PRU:Prussia
 PSK:Pskov
 PUN:Punjab
-QAR:QaraQoyunlu
+QAR:Qara Qoyunlu
 QAS:Qasim
 QUE:Quebec
 RAG:Ragusa
@@ -279,7 +279,7 @@ SUL:Sulu
 SWE:Sweden
 SWI:Switzerland
 TAU:Taungu
-TEU:TeutonicOrder
+TEU:Teutonic Order
 THU:Thuringia
 TIB:Tibet
 TIM:Timurids
@@ -298,7 +298,7 @@ TVE:Tver
 TYR:Tyrone
 UKR:Ruthenia
 URB:Urbino
-USA:1UnitedStates
+USA:1United States
 UTR:Utrecht
 WAL:Wallachia
 WBG:Wurzburg
@@ -312,7 +312,7 @@ YOR:Andhra
 ZAP:Zapotec
 ZAZ:Zaporozhie
 ZIM:Mutapa
-NIZ:DevaBengal
+NIZ:Deva Bengal
 BAS:Ahmadnagar
 NAT:Natives
 PIR:Pirates
@@ -411,7 +411,7 @@ BUK:Bukhara
 BGA:Baglana
 BGL:Bagelkhand
 CHD:Chanda
-CMP:RewaKantha
+CMP:Rewa Kantha
 GHR:Garhwal
 HAD:Hadoti
 JAJ:Habsan
@@ -434,11 +434,11 @@ MHX:Haixi
 KRC:Korchin
 KLK:Khalkha
 DGL:Maldives
-HMI:KaraDel
+HMI:Kara Del
 ZUN:Zunghar
 KAS:Yarkand
 KSD:Khoshuud
-SYG:SarigYogir
+SYG:Sarig Yogir
 UTS:U-tsang
 KAM:Kham
 GUG:Guge
@@ -467,13 +467,13 @@ MAK:Makuria
 SHM:Shammar
 ARB:Arabia
 GRM:Germiyan
-MPH:MuanPhuang
+MPH:Muan Phuang
 LIG:Ligor
 JOH:Johor
 KED:Kedah
 PRK:Perak
 HSE:Hsenwi
-MYA:MongYang
+MYA:Mong Yang
 AVA:Ava
 FEO:Theodoro
 VOL:Galicia–Volhynia
@@ -588,9 +588,9 @@ OKA:Odoyev
 ICE:Iceland
 SLO:Nitra
 HSC:Gaeldom
-ROM:RomanEmpire
+ROM:Roman Empire
 DTT:Dithmarschen
-GLH:GoldenHorde
+GLH:Golden Horde
 BEJ:Beja
 JIM:Jimma
 WLY:Welayta

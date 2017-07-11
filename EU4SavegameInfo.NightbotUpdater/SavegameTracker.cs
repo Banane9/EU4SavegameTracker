@@ -111,7 +111,7 @@ namespace EU4SavegameInfo.NightbotUpdater
 
             try
             {
-                nightbotUpdater.Update(save);
+                await nightbotUpdater.Update(save);
             }
             catch (IOException)
             {

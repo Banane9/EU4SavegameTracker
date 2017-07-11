@@ -4,7 +4,7 @@ WAR:Warsangali
 HOB:Hobyo
 GLE:Geledi
 KAF:Kaffa
-MED:MedriBâhri
+MED:Medri Bâhri
 HAR:Harar
 AFA:Aussa
 ALO:Alodie
@@ -46,7 +46,7 @@ NDO:Ndongo
 ANU:Aïnous
 ADA:Adal
 ADE:Yémen
-AKK:AqQoyunlu
+AKK:Aq Qoyunlu
 ALB:Albanie
 ALG:Alger
 ALH:al-Ahsâ'
@@ -132,7 +132,7 @@ GEL:Gueldre
 GEN:Gênes
 GEO:Géorgie
 GER:Allemagne
-GOL:GrandeHorde
+GOL:Grande Horde
 GOT:Gotland
 GRA:Grenade
 GRE:Grèce
@@ -171,7 +171,7 @@ KSH:Cachemire
 KUR:Courlande
 KZH:Kazakhs
 LAN:Florence
-LAP:LaPlata
+LAP:La Plata
 LEI:Leinster
 LIE:Liège
 LIT:Lithuanie
@@ -179,10 +179,10 @@ LNA:Lan-Na
 LOA:Loango
 LOR:Lorraine
 LOU:Louisiane
-LUA:LuangPrabang
+LUA:Luang Prabang
 LUN:Lunebourg
 LUX:Luxembourg
-LXA:LanXang
+LXA:Lan Xang
 MAD:Madurai
 MAG:Magdebourg
 MAI:Mayence
@@ -230,7 +230,7 @@ ORI:Orishâ
 ORL:Orléans
 OYO:Oyos
 PAL:Palatinat
-PAP:ÉtatsPontificaux
+PAP:États Pontificaux
 PAR:Parme
 PAT:Pattani
 PEG:Pégou
@@ -245,7 +245,7 @@ PRO:Provence
 PRU:Prusse
 PSK:Pskov
 PUN:Panjâb
-QAR:QaraQoyunlu
+QAR:Qara Qoyunlu
 QAS:Qasim
 QUE:Québec
 RAG:Raguse
@@ -279,7 +279,7 @@ SUL:Sulu
 SWE:Suède
 SWI:Suisse
 TAU:Taungû
-TEU:OrdreTeutonique
+TEU:Ordre Teutonique
 THU:Thuringe
 TIB:Tibet
 TIM:Timourides
@@ -305,7 +305,7 @@ WBG:Wurtzbourg
 VEN:Venise
 VIE:Vientiane
 VIJ:Vijayanâgara
-WLS:PaysdeGalles
+WLS:Paysde Galles
 WUR:Wurtemberg
 YAR:Iaroslavl
 YOR:Ândhra
@@ -366,7 +366,7 @@ CZH:Zhou
 CSH:Shun
 CXI:Xi
 JOL:Djolof
-PLC:RépubliquedesDeuxNations
+PLC:Républiquedes Deux Nations
 PRM:Perm
 CEY:Ceylan
 AFG:Afghanistan
@@ -411,7 +411,7 @@ BUK:Boukhara
 BGA:Baglana
 BGL:Baghelkhand
 CHD:Chandrapûr
-CMP:RewaKantha
+CMP:Rewa Kantha
 GHR:Garhwâl
 HAD:Hadotî
 JAJ:Habsân
@@ -434,11 +434,11 @@ MHX:Haixi
 KRC:Khortchin
 KLK:Khalkhas
 DGL:Maldives
-HMI:QaraDel
+HMI:Qara Del
 ZUN:Jüüngars
 KAS:Yarkand
 KSD:Qoshots
-SYG:SarïgYogïr
+SYG:Sarïg Yogïr
 UTS:Ü-Tsang
 KAM:Kham
 GUG:Gugé
@@ -467,13 +467,13 @@ MAK:Makourie
 SHM:Shammar
 ARB:Arabie
 GRM:Germiyan
-MPH:MuanPhuang
+MPH:Muan Phuang
 LIG:Tambralinga
 JOH:Johor
 KED:Kedah
 PRK:Perak
 HSE:Hsenwi
-MYA:MongYang
+MYA:Mong Yang
 AVA:Ava
 FEO:Théodoros
 VOL:Galicie–Volhynie

@@ -4,7 +4,7 @@ WAR:Warsangali
 HOB:Hobyo
 GLE:Geledi
 KAF:Kaffa
-MED:MedriBahri
+MED:Medri Bahri
 HAR:Harar
 AFA:Aussa
 ALO:Alodia
@@ -65,7 +65,7 @@ ATJ:Aceh
 AUV:Auvernia
 AVI:Aviñón
 AYU:Ayuthia
-AZT:ImperioAzteca
+AZT:Imperio Azteca
 BAD:Baden
 BLI:Bali
 BAN:Banten
@@ -94,8 +94,8 @@ CAS:Castilla
 CAT:Cataluña
 CEP:Corfú
 CHA:Champa
-CHE:TribusCherokee
-CHG:KanatodeChagatai
+CHE:Tribus Cherokee
+CHG:Kanatode Chagatai
 CHK:Champasak
 CHL:Chile
 CHM:Chimu
@@ -104,13 +104,13 @@ CND:Candar
 COL:Colombia
 CNN:Connaught
 COR:Córcega
-CRE:TribusCreek
+CRE:Tribus Creek
 CRI:Crimea
 CRN:Cornwall
 CRO:Croacia
 CRT:Creta
 CYP:Chipre
-DAI:DaiViet
+DAI:Dai Viet
 DAN:Dinamarca
 DAU:Delfinado
 DLH:Delhi
@@ -125,13 +125,13 @@ FLA:Flandes
 FOI:Foix
 FRA:Francia
 FRI:Friedland
-GBR:GranBretaña
+GBR:Gran Bretaña
 GDW:Gondwana
 GEL:Gelre
 GEN:Génova
 GEO:Georgia
 GER:Alemania
-GOL:HordadeOro
+GOL:Hordade Oro
 GOT:Gotland
 GRA:Granada
 GRE:Grecia
@@ -145,21 +145,21 @@ HED:Hedjaz
 HES:Hesse
 HOL:Holanda
 HUN:Hungría
-HUR:TribusHurón
-INC:ImperioInca
+HUR:Tribus Hurón
+INC:Imperio Inca
 IRE:Irlanda
-IRO:TribusIroquesas
+IRO:Tribus Iroquesas
 ITA:Italia
 JAP:Japón
 KAR:Karaman
 KAZ:Kazán
-KBO:KanemBornu
-KHA:KanatoMongol
+KBO:Kanem Bornu
+KHA:Kanato Mongol
 KHD:Kandesh
 KHI:Khiva
-KHM:ImperioJemer
+KHM:Imperio Jemer
 KLE:Cleves
-KNI:OrdendeSanJuan
+KNI:Ordende San Juan
 KOK:Kokkand
 KOL:Colonia
 KON:Congo
@@ -169,7 +169,7 @@ KSH:Cachemira
 KUR:Curlandia
 KZH:Kazakh
 LAN:Florencia
-LAP:LaPlata
+LAP:La Plata
 LEI:Leinster
 LIE:Lieja
 LIT:Lituania
@@ -177,15 +177,15 @@ LNA:Lanna
 LOA:Loango
 LOR:Lorena
 LOU:Louisiana
-LUA:LuangPrabang
+LUA:Luang Prabang
 LUN:Lüneburg
 LUX:Luxemburgo
-LXA:LaneXang
+LXA:Lane Xang
 MAD:Madurai
 MAG:Magdeburgo
 MAI:Maguncia
 MAL:Malí
-MAM:SultanatoMameluco
+MAM:Sultanato Mameluco
 MAN:Mantua
 MAY:Mayas
 MAZ:Mazovia
@@ -207,13 +207,13 @@ MON:Montenegro
 MOR:Marruecos
 MOS:Moscovia
 MTR:Mataram
-MUG:ImperioMogol
+MUG:Imperio Mogol
 MUN:Münster
 MYS:Misora
 NAJ:Najd
 NAV:Navarra
 NAX:Naxos
-NED:PaísesBajos
+NED:Países Bajos
 NEV:Nevers
 NOG:Nogai
 NOL:Northumberland
@@ -223,14 +223,14 @@ NPL:Nepal
 NRM:Normandía
 NUB:Funj
 ODH:Oudh
-OIR:HordaOirat
+OIR:Horda Oirat
 OLD:Oldenburg
 OMA:Omán
 ORI:Orissa
 ORL:Orleans
 OYO:Oyo
-PAL:ElPalatinado
-PAP:EstadosPontificios
+PAL:El Palatinado
+PAP:Estados Pontificios
 PAR:Parma
 PAT:Patani
 PEG:Pegu
@@ -244,7 +244,7 @@ PRO:Provenza
 PRU:Prusia
 PSK:Pskov
 PUN:Punjab
-QAS:KanatodeQasim
+QAS:Kanatode Qasim
 QUE:Québec
 RAG:Ragusa
 RAJ:Rajputna
@@ -258,7 +258,7 @@ SAV:Saboya
 SAX:Sajonia
 SCO:Escocia
 SER:Serbia
-SHA:TribusShawnee
+SHA:Tribus Shawnee
 SHL:Holstein
 SHR:Sharjah
 SHY:Shaybánidas
@@ -277,7 +277,7 @@ SUL:Sulu
 SWE:Suecia
 SWI:Suiza
 TAU:Taungu
-TEU:OrdenTeutónica
+TEU:Orden Teutónica
 THU:Turingia
 TIB:Tíbet
 TIM:Timúridas
@@ -290,13 +290,13 @@ TRI:Tréveris
 TRP:Trípoli
 TRV:Travanacore
 TUN:Túnez
-TUR:ImperioOtomano
+TUR:Imperio Otomano
 TUS:Toscana
 TVE:Tver
 TYR:Tyrone
 UKR:Ucrania
 URB:Urbino
-USA:EstadosUnidosdeAmérica
+USA:Estados Unidosde América
 UTR:Utrecht
 WAL:Valaquia
 WBG:Würzburgo
@@ -310,12 +310,12 @@ YOR:Andhra
 ZAP:Zapotecas
 ZAZ:Zaporozhie
 ZIM:Mutapa
-NIZ:DevaBengala
+NIZ:Deva Bengala
 BAS:Ahmednagar
 NAT:Indígenas
 PIR:Piratas
-AKK:AqQoyunlu
-QAR:QaraQoyunlu
+AKK:Aq Qoyunlu
+QAR:Qara Qoyunlu
 AMA:Amago
 ASA:Asakura
 CSK:Chosokabe
@@ -374,7 +374,7 @@ JOL:Jólof
 ABE:Abenaki
 APA:Apache
 ASI:Assiniboine
-BLA:PiesNegros
+BLA:Pies Negros
 CAD:Caddo
 CHI:Chickasaw
 CHO:Choctaw
@@ -411,7 +411,7 @@ BUK:Bukhara
 BGA:Baglana
 BGL:Bagelkhand
 CHD:Chanda
-CMP:RewaKantha
+CMP:Rewa Kantha
 GHR:Garhwal
 HAD:Hadoti
 JAJ:Habsan
@@ -432,11 +432,11 @@ MYR:Yeren
 MHX:Haixi
 KRC:Korchin
 KLK:Khalkha
-HMI:KaraDel
+HMI:Kara Del
 ZUN:Zunghar
 KAS:Yarkand
 KSD:Khoshuud
-SYG:SarigYogir
+SYG:Sarig Yogir
 UTS:Ü-Tsang
 KAM:Kham
 GUG:Guge
@@ -465,13 +465,13 @@ MAK:Makuria
 SHM:Shammar
 ARB:Arabia
 GRM:Germiyan
-MPH:MuanPhuang
+MPH:Muan Phuang
 LIG:Ligor
 JOH:Johor
 KED:Kedah
 PRK:Perak
 HSE:Hsenwi
-MYA:MongYang
+MYA:Mong Yang
 AVA:Ava
 FEO:Teodoro
 VOL:Galitzia-Volynia
@@ -501,7 +501,7 @@ KIC:Quiché
 KIO:Kiowa
 MIX:Mixtecas
 SAL:Salish
-TAR:ImperioPurépecha
+TAR:Imperio Purépecha
 TLA:Tlapanec
 TLX:Tlaxcala
 TOT:Totonacos
@@ -536,7 +536,7 @@ AUS:Australia
 BTI:Semien
 PIC:Picardía
 MTH:Meath
-ADU:AlAndalus
+ADU:Al Andalus
 MEM:Memmingen
 VER:Verden
 NSA:Nassau
@@ -587,13 +587,13 @@ OKA:Odóyev
 ICE:Islandia
 SLO:Nitra
 HSC:Inverness
-ROM:ImperioRomano
+ROM:Imperio Romano
 MIN:Min
 DAM:Damot
 HDY:Hadiya
 SOA:Shewa
 DTT:Dithmarschen
-GLH:HordadeOro
+GLH:Hordade Oro
 BEJ:Beja
 JIM:Jima
 WLY:Welayta

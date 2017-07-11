@@ -4,7 +4,7 @@ WAR:Warsangali
 HOB:Hobyo
 GLE:Geledi
 KAF:Kaffa
-MED:MedriBahri
+MED:Medri Bahri
 HAR:Harar
 AFA:Aussa
 ALO:Alodien
@@ -46,7 +46,7 @@ NDO:Ndongo
 ANU:Ainu
 ADA:Adal
 ADE:Jemen
-AKK:AqQoyunlu
+AKK:Aq Qoyunlu
 ALB:Albanien
 ALG:Algerien
 ALH:Haasa
@@ -111,7 +111,7 @@ CRN:Cornwall
 CRO:Kroatien
 CRT:Kreta
 CYP:Zypern
-DAI:DaiViet
+DAI:Dai Viet
 DAN:Dänemark
 DAU:Dauphiné
 DLH:Delhi
@@ -132,7 +132,7 @@ GEL:Geldern
 GEN:Genua
 GEO:Georgien
 GER:Deutschland
-GOL:BlaueHorde
+GOL:Blaue Horde
 GOT:Gotland
 GRA:Granada
 GRE:Griechenland
@@ -171,18 +171,18 @@ KSH:Kaschmir
 KUR:Kurland
 KZH:Kasachstan
 LAN:Florenz
-LAP:RiodelaPlata
+LAP:Riodela Plata
 LEI:Leinster
 LIE:Lüttich
 LIT:Litauen
-LNA:LanNa
+LNA:Lan Na
 LOA:Loango
 LOR:Lothringen
 LOU:Louisiana
-LUA:LuangPrabang
+LUA:Luang Prabang
 LUN:Lüneburg
 LUX:Luxemburg
-LXA:LanXang
+LXA:Lan Xang
 MAD:Madurai
 MAG:Magdeburg
 MAI:Mainz
@@ -245,7 +245,7 @@ PRO:Provence
 PRU:Preußen
 PSK:Pleskau
 PUN:Pundschab
-QAR:QaraQoyunlu
+QAR:Qara Qoyunlu
 QAS:Kassimow
 QUE:Quebec
 RAG:Ragusa
@@ -279,7 +279,7 @@ SUL:Sulu
 SWE:Schweden
 SWI:Schweiz
 TAU:Taungu
-TEU:DeutscherOrden
+TEU:Deutscher Orden
 THU:Thüringen
 TIB:Tibet
 TIM:Timuridenreich
@@ -292,13 +292,13 @@ TRI:Trier
 TRP:Tripolitanien
 TRV:Travancore
 TUN:Tunesien
-TUR:OsmanischesReich
+TUR:Osmanisches Reich
 TUS:Toskana
 TVE:Twer
 TYR:Tyrone
 UKR:Ukraine
 URB:Urbino
-USA:1VereinigteStaaten
+USA:1Vereinigte Staaten
 UTR:Utrecht
 WAL:Walachei
 WBG:Würzburg
@@ -411,7 +411,7 @@ BUK:Buchara
 BGA:Baglana
 BGL:Bagelkhand
 CHD:Chanda
-CMP:RewaKantha
+CMP:Rewa Kantha
 GHR:Garhwal
 HAD:Hadoti
 JAJ:Habsan
@@ -438,7 +438,7 @@ HMI:Kara-Del
 ZUN:Zunghar
 KAS:Yarkand
 KSD:Khoshuud
-SYG:SarigYogir
+SYG:Sarig Yogir
 UTS:Ü-Tsang
 KAM:Kham
 GUG:Guge
@@ -496,7 +496,7 @@ TFL:Tafilalet
 ARP:Arapaho
 CNK:Chinook
 COC:Cocom
-XIU:TutulXiu
+XIU:Tutul Xiu
 HDA:Haida
 ITZ:Itzá
 KIC:Quiché
@@ -588,9 +588,9 @@ OKA:Odojew
 ICE:Island
 SLO:Nitra
 HSC:Inverness
-ROM:RömischesReich
+ROM:Römisches Reich
 DTT:Dithmarschen
-GLH:GoldeneHorde
+GLH:Goldene Horde
 BEJ:Beja
 JIM:Jimma
 WLY:Wolaytta

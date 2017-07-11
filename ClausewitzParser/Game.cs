@@ -5,11 +5,9 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
-using CEParser;
-using CEParser.Decoding;
 using Microsoft.Win32;
 
-namespace CEParser
+namespace ClausewitzParser
 {
     /// <summary>
     /// Represents infos about a supported game.
@@ -91,7 +89,7 @@ namespace CEParser
         public abstract string SteamId { get; }
 
         /// <summary>
-        /// Gets the length of the longest header of all <see cref="Game"/>s.
+        /// Gets the length of the longest header of all <see cref="Games"/>.
         /// </summary>
         internal static int MaxHeaderLength
         {
@@ -104,11 +102,6 @@ namespace CEParser
                 return headerLength;
             }
         }
-
-        /// <summary>
-        /// Gets the <see cref="CEParser.Decoding.BinaryTokens"/> used by the game.
-        /// </summary>
-        internal BinaryTokens BinaryTokens { get; }
 
         /// <summary>
         /// Gets the header used in binary files of the game.
@@ -142,11 +135,6 @@ namespace CEParser
             }
             catch (SecurityException)
             { }
-        }
-
-        private Game()
-        {
-            BinaryTokens = new BinaryTokens(Extension + "bin.csv");
         }
 
         private sealed class CK2Game : Game

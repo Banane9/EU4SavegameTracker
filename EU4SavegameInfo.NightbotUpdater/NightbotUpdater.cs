@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EU4Savegames;
 using EU4Savegames.Localisation;
@@ -20,7 +21,8 @@ namespace EU4SavegameInfo.NightbotUpdater
         {
             { "!greatpowers", "Great Powers of the World" },
             { "!highscores", "Top 10 highest scoring countries" },
-            { "!ideas", "Idea Group Picks" }
+            //{ "!ideas", "Idea Group Picks" },
+            { "!players", "Player Countries" }
         };
 
         private readonly HttpClient httpClient = new HttpClient();
@@ -106,19 +108,28 @@ namespace EU4SavegameInfo.NightbotUpdater
             return true;
         }
 
-        public void Update(EU4Save save)
+        public async Task Update(EU4Save save)
         {
+            var playerCountries = save.GetSavegameObjects<PlayerCountriesObject>().SingleOrDefault();
+
+            if (playerCountries != null)
+                await UpdateCommand("!players", buildPlayersResponse(playerCountries));
+
             var countries = save.GetSavegameObjects<CountriesObject>().SingleOrDefault()?.Countries;
+
+            await Task.Delay(15000);
 
             if (countries != null)
             {
-                UpdateCommand("!highscores", buildHighscoreResponse(countries));
+                await UpdateCommand("!highscores", buildHighscoreResponse(countries));
 
-                UpdateCommand("!greatpowers", buildGPResponse(countries));
+                await Task.Delay(15000);
 
-                var playerCountry = countries.FirstOrDefault(country => country.IsPlayer);
-                if (playerCountry != null)
-                    UpdateCommand("!ideas", buildIdeasResponse(playerCountry));
+                await UpdateCommand("!greatpowers", buildGPResponse(countries));
+
+                //var playerCountry = countries.FirstOrDefault(country => country.IsPlayer);
+                //if (playerCountry != null)
+                //    await UpdateCommand("!ideas", buildIdeasResponse(playerCountry));
             }
         }
 
@@ -189,6 +200,11 @@ namespace EU4SavegameInfo.NightbotUpdater
 
             return "Idea Groups: " + string.Join(", ", country.Ideas
                     .Select(idea => $"{IdeaNames.GetEntry("english", idea.Name)} ({idea.Progress})"));
+        }
+
+        private string buildPlayersResponse(PlayerCountriesObject playerCountries)
+        {
+            return $"Players: {string.Join(", ", playerCountries.Select(kvp => $"{kvp.Key} - {(Regex.IsMatch(kvp.Value, "O\\d{2}") ? "Observer" : TagNames.GetEntry("english", kvp.Value))}"))}";
         }
 
         private async void establishDefaultRequiredCommands()

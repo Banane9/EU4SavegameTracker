@@ -21,7 +21,8 @@ namespace EU4Savegames
 
         public EU4Save(string path)
         {
-            savegame = SaveLoader.Decode(path, "temp.eu4").Result;
+            //savegame = SaveLoader.Decode(path, "temp.eu4").Result;
+            savegame = path;
             Read();
         }
 
@@ -38,33 +39,38 @@ namespace EU4Savegames
         public void Read()
         {
             var openedBraces = 0;
-            var split = savegame.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-            var enumerator = split.GetEnumerator();
-            while (enumerator.MoveNext())
+            //var split = savegame.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            using (var zip = new ZipArchive(File.Open(savegame, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+            using (var fileStream = new StreamReader(zip.GetEntry(Path.GetFileName(savegame))?.Open() ?? zip.GetEntry("game.eu4")?.Open()))
             {
-                var line = (string)enumerator.Current;
-
-                if (openedBraces > 0)
+                var split = fileStream.GetAllLines();
+                var enumerator = split.GetEnumerator();
+                while (enumerator.MoveNext())
                 {
-                    if (line.Contains("}"))
-                        --openedBraces;
+                    var line = (string)enumerator.Current;
 
-                    continue;
+                    if (openedBraces > 0)
+                    {
+                        if (line.Contains("}"))
+                            --openedBraces;
+
+                        continue;
+                    }
+
+                    if (line.Contains('{'))
+                        ++openedBraces;
+
+                    if (!SavegameObject.TryGetReaderForTag(getTag(line), out var readTagToObject))
+                        continue;
+
+                    var savegameObject = readTagToObject(enumerator);
+                    var savegameObjectType = savegameObject.GetType();
+
+                    if (!savegameObjects.ContainsKey(savegameObjectType))
+                        savegameObjects.Add(savegameObjectType, new List<SavegameObject>());
+
+                    savegameObjects[savegameObjectType].Add(savegameObject);
                 }
-
-                if (line.Contains('{'))
-                    ++openedBraces;
-
-                if (!SavegameObject.TryGetReaderForTag(getTag(line), out var readTagToObject))
-                    continue;
-
-                var savegameObject = readTagToObject(enumerator);
-                var savegameObjectType = savegameObject.GetType();
-
-                if (!savegameObjects.ContainsKey(savegameObjectType))
-                    savegameObjects.Add(savegameObjectType, new List<SavegameObject>());
-
-                savegameObjects[savegameObjectType].Add(savegameObject);
             }
         }
 

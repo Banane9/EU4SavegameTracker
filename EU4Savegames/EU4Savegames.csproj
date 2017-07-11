@@ -39,8 +39,14 @@
     <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
     </Reference>
+    <Reference Include="Farmhash.Sharp, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Farmhash.Sharp.0.1\lib\net45\Farmhash.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Pfarah, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pfarah.0.7.0\lib\net45\Pfarah.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,6 +61,7 @@
   <ItemGroup>
     <Compile Include="EU4Save.cs" />
     <Compile Include="Localisation\IdeaNames.cs" />
+    <Compile Include="Objects\PlayerCountriesObject.cs" />
     <Compile Include="SaveLoader.cs" />
     <Compile Include="Objects\CountriesObject.cs" />
     <Compile Include="Objects\GreatPowersObject.cs" />
